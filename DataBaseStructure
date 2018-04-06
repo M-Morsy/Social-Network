@@ -1,0 +1,22 @@
+{
+//all users
+{},{},{},{},
+{
+// one user information
+"id":0
+"email":"@example.com"
+"password":"1234"
+"name" : "ahmed"
+"posts": {
+// all posts for this user
+}
+"comments":{
+// all comments for this user 
+}
+"friends":{
+// all friends for this user 
+}
+"groups":{ 
+// all groups for this user}
+}
+}
