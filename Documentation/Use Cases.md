@@ -1,8 +1,8 @@
 # Features
-create an account and add friends, posts, and comments
-view user posts and comments and friend posts too.
-Search social network users with bounds
-Analytics on graph
+* create an account and add friends, posts, and comments
+* view user posts and comments and friend posts too.
+* Search social network users with bounds
+* Analytics on graph
 
 # Use cases
 ## User:
