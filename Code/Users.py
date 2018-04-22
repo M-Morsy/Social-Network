@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
-
-# -*- coding: utf-8 -*-
 """
 Created on Fri Apr 20 15:05:17 2018
 
 @author: shimaa
 """
-class Users(): 
+import Person as person
+
+class Users(person.Person): 
   #** Data **##
   numUsers = 0  # Actual number of users in the site 
   maxUsers = 0 # Max number of users in the site we can deal with
@@ -19,7 +19,7 @@ class Users():
         for row in range(self.maxUsers):
           self.edges.append([])
           for col in range(self.maxUsers):
-             self.edges[row].append(0)       
+             self.edges[row].append(0)  
   def __del__(self): # nothing to do 
        print ("users: ",self.Users)
   ##** Graph functionality **##
