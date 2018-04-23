@@ -27,7 +27,7 @@ class Person:
         # self.dict['Password'].append(password)
 
     def __del__(self):
-        print ("person: ", self.name, "with ID: ", self.ID, "died")
+        print("person: ", self.name, "with ID: ", self.ID, "died")
     # ** Getters and Setters **##
 
     def get_ID(self):
@@ -54,13 +54,13 @@ class Person:
     def get_password(self):
         return self.password
 
-    def set_password (self, password):
+    def set_password(self, password):
         self.password = password
         # self.dict['Password'].append(password)
 
     # ** getters and setters for whole information **##
     def get_info(self):
-        return [self.ID, self.name, self.email , self.password]
+        return [self.ID, self.name, self.email, self.password]
 
     def set_info(self, ID=None, name=None, email=None, password=None):
         if ID is None:
