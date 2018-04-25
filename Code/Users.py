@@ -8,15 +8,17 @@ import Person as person
 import Post as post
 
 
-class Users(person.Person):
-    # ** Data **##
+class Users(person.Person, post.Post):
+    # ** Data ** #
     numUsers = 0  # Actual number of users in the site
     maxUsers = 0  # Max number of users in the site we can deal with
+    num_posts = 0  # Actual number of posts in the graph
     Users = [0 for x in range(maxUsers)]  # all users
     edges = []  # [[0 for x in range(maxUsers)] for y in range(maxUsers)] # all connection between users
     marks = [0 for x in range(maxUsers)]  # mark user when search about special one
+    Posts = []
 
-    ##** Constructor & Destrcutor **##
+    # ** Constructor & Destrcutor ** #
     def __init__(self, maxUsers):  # set the value of max users
         self.maxUsers = maxUsers
         for row in range(self.maxUsers):
@@ -27,7 +29,7 @@ class Users(person.Person):
     def __del__(self):  # nothing to do
         print("users: ", self.Users)
 
-    ##** Graph functionality **##
+    # ** Graph functionality ** #
     def MakeEmpty(self):  # delete every thing
         self.numUsers = 0
         self.maxUsers = 0
@@ -90,35 +92,47 @@ class Users(person.Person):
     def BreadthFirtsSearch(self, startUser, endUser):
         print("nothing")
 
-    # more on users
-    # I believe this can't be used here !
-    def get_post_id (self):
-        pass
 
     # **post** #
-    def add_post(self, text):
-        # first problem
-        user_id = 0
-        post.Post(text, user_id)
+    def add_post(self, text, user_id):
+        self.num_posts += 1
+        self.Posts.append(post)
+        self.Users[user_id].add_post_id(self.num_posts)
+        self.Posts[self.num_posts].Post(text, user_id)
         pass
 
+    # ** post getters ** #
     def get_text(self, post_id):
-        pass
-
-    def edit_post(self, post_id):
+        self.Posts[post_id].get_text()
         pass
 
     def post_view(self, post_id):
+        self.Posts[post_id].get_text()
         pass
 
     # I believe this can't be used here !
     def get_post_id(self):
         pass
 
+    def get_posts_ids(self, user_id):
+        self.Users[user_id].get_posts_ids()
+
+    # post view for all the posts of that user >> timeline !
+    def get_posts(self, user_id):
+        posts_ids = self.Users[user_id].get_posts_ids()
+        for i in range(posts_ids):
+            self.Posts[posts_ids[i]].Post_view()
+
+
+    # ** post setters ** #
     def set_post_id(self, post_id):
         post.set_Post_ID(post_id)
 
     def get_user_id(self, post_id):
+        pass
+
+    def edit_post(self, post_id):
+        self.Posts[post_id].get_text()
         pass
 
     # comment

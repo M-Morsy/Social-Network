@@ -14,6 +14,6 @@ post1.AddComment('fih final bokra!', 98)
 post1.AddComment('ya 7ywan ya mot5lf.. enta yatrash', 36)
 
 post2 = Post('el so7ab fi agaza', 125)
-
+print(post2.get_text())
 print(post1.Post_view())
 print(post2.Post_view())
