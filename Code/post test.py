@@ -17,3 +17,7 @@ post2 = Post('el so7ab fi agaza', 125)
 print(post2.get_text())
 print(post1.post_view())
 print(post2.post_view())
+print(post1.get_comments_num())
+# get id of a comment
+# print(post1.Comments[3].get_comment_id)
+print(post1.get_comment_id('ya 7ywan ya mot5lf.. enta yatrash'))

@@ -35,6 +35,10 @@ class Post:
     def delete_comment(self, comment_count):
         del self.Comments[comment_count]
 
+    # not working
+    def get_comment_id(self, text):
+        return self.Comments.index(text)
+
     def get_comments_num(self):
         return len(self.Comments)
 
@@ -42,7 +46,7 @@ class Post:
         post_contents = "{}\n \n".format(self.text)
         i = 1
         for x in self.Comments:
-            post_contents += "     {}- {}: {} \n \n".format(i, x.user_ID, x.text)
+            post_contents += "     {}- {}: {} \n \n".format(i, x.user_id, x.text)
             i += 1
 
         return post_contents

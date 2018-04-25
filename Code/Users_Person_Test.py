@@ -35,10 +35,9 @@ print(admin.Posts[0].post_view())
 print(admin.post_view(0), "\n")
 
 # comment
-admin.Posts[0].add_comment("my first comment", 0)
+admin.Posts[0].add_comment("my first comment", user_id=0)
 print(admin.Posts[0].post_view())
 admin.add_comment("my second comment", post_id=0, user_id=0)
 print(admin.Posts[0].post_view())
-
-admin.Posts[0].delete_comment(1)
+admin.Posts[0].delete_comment(comment_count=1)
 print(admin.Posts[0].post_view())

@@ -134,11 +134,11 @@ class Users(person.Person, post.Post):
         self.Posts[post_id].add_comment(text, user_id)
 
     def edit_comment (self, text, post_id, comment_id):
-        pass
+        self.Posts[post_id].edit_comment(text, comment_id)
 
     def delete_comment (self, post_id, comment_id):
-        pass
+        self.Posts[post_id].delete_comment(comment_id)
 
-    def get_comments_num (self, post_id):
-        pass
+    def get_comments_num(self, post_id):
+        self.Posts[post_id].get_comments_num()
 
