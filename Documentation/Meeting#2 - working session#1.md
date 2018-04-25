@@ -21,6 +21,9 @@
 * Show friends posts
 * Bounded Search for some one who is not my friend (by email or ID?)
 
+## Error handeling
+* Accessing any array (posts ... etc)
+* Authorized action (comment - edit ... etc.)
 ## Link two groups of users
 * Two groups with no mutual friends
 * All under one graph to avoid redundant data IDs, and other data
