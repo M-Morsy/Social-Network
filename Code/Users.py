@@ -16,7 +16,7 @@ class Users(person.Person, post.Post):
     Users = [0 for x in range(maxUsers)]  # all users
     edges = []  # [[0 for x in range(maxUsers)] for y in range(maxUsers)] # all connection between users
     marks = [0 for x in range(maxUsers)]  # mark user when search about special one
-    Posts = []
+    Posts = []  # array of post
 
     # ** Constructor & Destrcutor ** #
     def __init__(self, maxUsers):  # set the value of max users
@@ -92,48 +92,42 @@ class Users(person.Person, post.Post):
     def BreadthFirtsSearch(self, startUser, endUser):
         print("nothing")
 
-
     # **post** #
-    def add_post(self, text, user_id):
+    def add_post(self, post, user_id):
         self.num_posts += 1
         self.Posts.append(post)
         self.Users[user_id].add_post_id(self.num_posts)
-        self.Posts[self.num_posts].Post(text, user_id)
-        pass
 
     # ** post getters ** #
     def get_text(self, post_id):
-        self.Posts[post_id].get_text()
-        pass
+        return self.Posts[post_id].get_text()
 
     def post_view(self, post_id):
-        self.Posts[post_id].get_text()
-        pass
+        return self.Posts[post_id].post_view()
 
     # I believe this can't be used here !
-    def get_post_id(self):
+    def get_post_id(self, post_id):
+        post.get_Post_id(post_id)
         pass
 
     def get_posts_ids(self, user_id):
-        self.Users[user_id].get_posts_ids()
+        return self.Users[user_id].get_posts_ids()
 
     # post view for all the posts of that user >> timeline !
     def get_posts(self, user_id):
         posts_ids = self.Users[user_id].get_posts_ids()
         for i in range(posts_ids):
-            self.Posts[posts_ids[i]].Post_view()
-
+            return self.Posts[posts_ids[i]].Post_view()
 
     # ** post setters ** #
     def set_post_id(self, post_id):
-        post.set_Post_ID(post_id)
+        post.set_Post_id(post_id)
 
     def get_user_id(self, post_id):
-        pass
+        post.get_user_id(post_id)
 
-    def edit_post(self, post_id):
-        self.Posts[post_id].get_text()
-        pass
+    def edit_post(self, post_id, text):
+        self.Posts[post_id].edit(text)
 
     # comment
     def add_comment (self, post_id):

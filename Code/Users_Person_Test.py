@@ -2,7 +2,7 @@
 import Users as users
 import Person as person
 import Post as post
-
+# admin and user
 admin = users.Users(5)
 print(admin.IsEmpty())
 print(admin.IsFull())
@@ -17,7 +17,7 @@ print("user number 1 name is", admin.Users[1].get_name())
 
 print(admin.numUsers)
 x = admin.IndexIs(admin.Users[1])
-print("x=",x)
+print("x=", x)
 admin.MarkUser(admin.Users[1])
 print(admin.IsMarked(admin.Users[1]))
 print(admin.edges)
@@ -28,3 +28,8 @@ print(admin.Users[0].get_password())
 admin.Users[0].set_password("1234")
 print(admin.Users[0].get_password())
 
+# post
+print ("\nPost Testing: \n")
+admin.add_post(post.Post("test text", 1), 1)
+print(admin.Posts[0].post_view())
+print(admin.post_view(0), "\n")
