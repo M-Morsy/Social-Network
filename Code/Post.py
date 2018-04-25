@@ -7,6 +7,8 @@ class Post:
         Post.Post_ID += 1
         self.Post_ID = Post.Post_ID
         self.Comments=[]
+    def __del__(self):
+        pass        
     def get_Post_ID (self):
         return self.Post_ID
     def set_Post_ID (self, Post_ID):
@@ -42,6 +44,8 @@ class Comment:
         self.Post_ID = Post_ID
         Comment.Comment_ID += 1
         self.Comment_ID = Comment.Comment_ID
+    def __del__(self):
+        pass        
     def get_text(self):
         return self.text
     def get_Post_ID(self):
