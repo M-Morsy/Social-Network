@@ -8,12 +8,12 @@ class Person:
                 "Password": []  # four digits password = 10^4 users
             }
     """
-    Posts = []   # Posts'  IDs >> Linked list >> To Be Done
+    Posts = []  # Posts'  IDs >> Linked list >> To Be Done
     Groups = []  # groups' IDs >> Linked list >> To Be Done
-    Admin = []   # groups' IDs >> Linked list >> To Be Done
+    Admin = []  # groups' IDs >> Linked list >> To Be Done
     next = None
     Count = 0
-    
+
     # ** Constructor & Destructor **##
     def __init__(self, name, email, password):
         Person.Count += 1
@@ -28,12 +28,13 @@ class Person:
 
     def __del__(self):
         print("person: ", self.name, "with ID: ", self.ID, "died")
+
     # ** Getters and Setters **##
 
-    def get_ID(self):
+    def get_id(self):
         return self.ID
 
-    def set_ID(self, ID):
+    def set_id(self, ID):
         self.ID = ID
         # self.dict['ID'].append(ID)
 
@@ -62,11 +63,11 @@ class Person:
     def get_info(self):
         return [self.ID, self.name, self.email, self.password]
 
-    def set_info(self, ID=None, name=None, email=None, password=None):
-        if ID is None:
+    def set_info(self, id=None, name=None, email=None, password=None):
+        if id is None:
             pass
         else:
-            self.set_ID(ID)
+            self.set_id(id)
         if name is None:
             pass
         else:
@@ -81,36 +82,33 @@ class Person:
             self.set_password(password)
 
     # ** adding **##
-    def add_post(self, post_ID):
-        self.Posts.append(post_ID)
+    def add_post(self, post_id):
+        self.Posts.append(post_id)
 
-    def add_group (self, group_ID):
-        self.Groups.append(group_ID)
+    def add_group(self, group_id):
+        self.Groups.append(group_id)
 
-    def add_admin_group (self, group_ID):
-        self.Admin.append(group_ID)
-        
+    def add_admin_group(self, group_id):
+        self.Admin.append(group_id)
+
     # when a user is declared Admin, he will be declared here and in groups class or its equivilant  
-    
+
     # ** removing **##
-    def remove_post (self , post_ID):
-        if (self.Posts.index(post_ID)):
-            self.Posts.remove(post_ID)
+    def remove_post(self, post_id):
+        if self.Posts.index(post_id):
+            self.Posts.remove(post_id)
         else:
-            print ("error")  # TBR
+            print("error")  # TBR
 
-    def remove_group (self, group_ID):
-        if (self.Groups.index(group_ID)):
-            self.Groups.remove(group_ID)
+    def remove_group(self, group_id):
+        if self.Groups.index(group_id):
+            self.Groups.remove(group_id)
         else:
-            print ("error")  # TBR
+            print("error")  # TBR
 
-    def remove_admin_group (self, group_ID):
-        if (self.Admin.index(group_ID)):
-            self.Admin.remove(group_ID)
+    def remove_admin_group(self, group_id):
+        if self.Admin.index(group_id):
+            self.Admin.remove(group_id)
         else:
-            print ("error")  # TBR
-
-
-
+            print("error")  # TBR
 
