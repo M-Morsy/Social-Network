@@ -130,10 +130,10 @@ class Users(person.Person, post.Post):
         self.Posts[post_id].edit(text)
 
     # comment
-    def add_comment (self, post_id):
-        pass
+    def add_comment (self,text ,post_id, user_id):
+        self.Posts[post_id].add_comment(text, user_id)
 
-    def edit_comment (self, post_id, comment_id):
+    def edit_comment (self, text, post_id, comment_id):
         pass
 
     def delete_comment (self, post_id, comment_id):

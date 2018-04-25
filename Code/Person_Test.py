@@ -19,8 +19,8 @@ print("Count = ", Person.Person.Count)
 
 # post addition and removal testing
 print ("added post ID 2")
-p2.add_post(2)
-p2.add_post(10)
+p2.add_post_id(2)
+p2.add_post_id(10)
 print(p2.get_posts_ids())
 print(p2.posts.index(10))
 print ("removed post ID 2")
