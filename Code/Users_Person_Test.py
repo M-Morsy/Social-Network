@@ -2,6 +2,9 @@
 import Users as users
 import Person as person
 import Post as post
+from enum import Enum
+relation = Enum('relation', 'Friend Sibling Parent Child Relative')
+
 # admin and user
 admin = users.Users(5)
 print(admin.IsEmpty())
@@ -21,7 +24,8 @@ print("x=", x)
 admin.MarkUser(admin.Users[1])
 print(admin.IsMarked(admin.Users[1]))
 print(admin.edges)
-admin.AddEdge(admin.Users[0],admin.Users[1],20)
+admin.AddEdge(admin.Users[0], admin.Users[1], 20)
+print(admin.edges)
 print(admin.WeightIs(admin.Users[0],admin.Users[1]))
 print(admin.Users[0].get_name())
 print(admin.Users[0].get_password())
@@ -41,3 +45,21 @@ admin.add_comment("my second comment", post_id=0, user_id=0)
 print(admin.Posts[0].post_view())
 admin.Posts[0].delete_comment(comment_count=1)
 print(admin.Posts[0].post_view())
+
+# adding and removing people
+print ("Testing people's relation:\n")
+
+admin.add_relation(sender_id=1, receiver_id=0)
+print("Request sent as friend - default")
+print("Relation still like before\n", admin.edges)
+admin.accept_relation(1,0)
+print("Request accepted:\n", admin.edges, "\n")
+
+weight = relation.Parent
+admin.add_relation(sender_id=1, receiver_id=0, weight=weight)
+print("Request sent as", weight)
+print("Relation still like before\n", admin.edges)
+admin.accept_relation(1,0)
+print("Request accepted:\n", admin.edges)   # didn't work parent & child :/
+admin.remove_relation(1,0)
+print("Relation Removed: \n", admin.edges, "\n")

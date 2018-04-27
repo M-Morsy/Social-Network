@@ -6,6 +6,10 @@ Created on Fri Apr 20 15:05:17 2018
 """
 import Person as person
 import Post as post
+from enum import Enum
+
+relation = Enum('relation', 'Friend Sibling Parent Child Relative')
+
 
 
 class Users(person.Person, post.Post):
@@ -64,6 +68,21 @@ class Users(person.Person, post.Post):
         row = self.IndexIs(fromPesron)
         col = self.IndexIs(toPerson)
         self.edges[row][col] = weight
+        if weight == relation.Parent:
+            self.edges[col][row] = relation.Child
+
+        elif weight == relation.Child:
+            self.edges[col][row] = relation.Parent
+
+        else:
+            self.edges[col][row] = weight
+        """Not working for child & parent"""
+
+    def remove_edge(self, from_person, to_person): # remove connection between two users
+        row = self.IndexIs(from_person)
+        col = self.IndexIs(to_person)
+        self.edges[row][col] = 0
+        self.edges[col][row] = 0
 
     def WeightIs(self, fromPesron, toPerson):  # add weight between two users
         row = self.IndexIs(fromPesron)
@@ -142,3 +161,47 @@ class Users(person.Person, post.Post):
     def get_comments_num(self, post_id):
         self.Posts[post_id].get_comments_num()
 
+    # Operation on a group
+    def add_relation(self, sender_id, receiver_id, weight=relation.Friend):
+        self.Users[sender_id].requests_sent[receiver_id] = weight   # save in sender that he/she sent
+        if weight == relation.Parent:
+            self.Users[receiver_id].requests_received[sender_id] = relation.Child
+
+        elif weight == relation.Child:
+            self.Users[receiver_id].requests_received[sender_id] = relation.Parent
+
+        else:
+            self.Users[receiver_id].requests_received[sender_id] = weight
+        pass
+
+    def accept_relation(self, sender_id, receiver_id):
+        # check if weight is the same at both
+        weight = self.Users[sender_id].requests_sent[receiver_id]   # weight by sender
+        self.AddEdge(self.Users[sender_id], self.Users[receiver_id], weight)
+        # we need try & except here
+        del self.Users[sender_id].requests_sent[receiver_id]
+        del self.Users[receiver_id].requests_received[sender_id]
+        pass
+
+    def reject_relation(self, sender_id, receiver_id):
+        # we need try & except here
+        del self.Users[sender_id].requests_sent[receiver_id]
+        del self.Users[receiver_id].requests_received[sender_id]
+        pass
+
+    def remove_relation (self, person_one, person_two):
+        self.remove_edge(self.Users[person_one], self.Users[person_two])
+        pass
+
+    def search_friends (self):
+        pass
+
+    def show_friends (self):
+        pass
+
+    def show_friends_posts (self):
+        pass
+
+    def bounded_search (self):
+        # Search for some one who is not my friend (by email or ID?)
+        pass

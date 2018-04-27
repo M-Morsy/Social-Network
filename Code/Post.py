@@ -36,8 +36,10 @@ class Post:
         del self.Comments[comment_count]
 
     # not working
+    '''
     def get_comment_id(self, text):
         return self.Comments.index(text)
+    '''
 
     def get_comments_num(self):
         return len(self.Comments)

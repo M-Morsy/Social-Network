@@ -12,19 +12,20 @@ class Person:
     Count = 0
 
     # ** Constructor & Destructor **##
-    def __init__(self, name, email, password):
+    def __init__(self, name, email, password, age=None, location=None, gender=None):
         Person.Count += 1
         self.ID = self.Count
         self.name = name
         self.email = email
         self.password = password
+        self.age = age
+        self.location = location
+        self.gender = gender
         self.groups = []
         self.posts = []
         self.admin = []
-        # self.dict['ID'].append(self.Count)  # To be replaced by random ID
-        # self.dict['Name'].append(name)
-        # self.dict['Email'].append(email)
-        # self.dict['Password'].append(password)
+        self.requests_sent = {}
+        self.requests_received = {}
 
     def __del__(self):
         print("person: ", self.name, "with ID: ", self.ID, "died")
@@ -34,30 +35,14 @@ class Person:
     def get_id(self):
         return self.ID
 
-    def set_id(self, ID):
-        self.ID = ID
-        # self.dict['ID'].append(ID)
-
     def get_name(self):
         return self.name
-
-    def set_name(self, name):
-        self.name = name
-        # self.dict['Name'].append(name)
 
     def get_email(self):
         return self.email
 
-    def set_email(self, email):
-        self.email = email
-        # self.dict['Email'].append(email)
-
     def get_password(self):
         return self.password
-
-    def set_password(self, password):
-        self.password = password
-        # self.dict['Password'].append(password)
 
     def get_posts_ids (self):
         return self.posts
@@ -90,6 +75,23 @@ class Person:
         else:
             self.set_password(password)
 
+    # ** setters **#
+    def set_id(self, ID):
+        self.ID = ID
+        # self.dict['ID'].append(ID)
+
+    def set_name(self, name):
+        self.name = name
+        # self.dict['Name'].append(name)
+
+    def set_email(self, email):
+        self.email = email
+        # self.dict['Email'].append(email)
+
+    def set_password(self, password):
+        self.password = password
+        # self.dict['Password'].append(password)
+
     # ** adding **##
     def add_post_id(self, post_id):
         self.posts.append(post_id)
@@ -99,6 +101,9 @@ class Person:
 
     def add_admin_group(self, group_id):
         self.admin.append(group_id)
+
+    def add_friend_request(self, user_id, weight):
+        self.requests_received[user_id] = weight
 
     # when a user is declared Admin, he will be declared here and in groups class or its equivilant  
 
