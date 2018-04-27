@@ -8,9 +8,13 @@ import Person as person
 import Post as post
 from enum import Enum
 
-relation = Enum('relation', 'Friend Sibling Parent Child Relative')
 
-
+class relation(Enum):
+    Friend = 0
+    Sibling = 1
+    Parent = 2
+    Child = 3
+    Relative = 4
 
 class Users(person.Person, post.Post):
     # ** Data ** #
@@ -68,14 +72,16 @@ class Users(person.Person, post.Post):
         row = self.IndexIs(fromPesron)
         col = self.IndexIs(toPerson)
         self.edges[row][col] = weight
-        if weight == relation.Parent:
+        print(weight)
+        print(weight == relation.Parent)
+        if weight is relation.Parent:
             self.edges[col][row] = relation.Child
 
-        elif weight == relation.Child:
+        elif weight is relation.Child:
             self.edges[col][row] = relation.Parent
 
         else:
-            self.edges[col][row] = weight
+           self.edges[col][row] = weight
         """Not working for child & parent"""
 
     def remove_edge(self, from_person, to_person): # remove connection between two users

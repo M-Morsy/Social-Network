@@ -2,8 +2,7 @@
 import Users as users
 import Person as person
 import Post as post
-from enum import Enum
-relation = Enum('relation', 'Friend Sibling Parent Child Relative')
+
 
 # admin and user
 admin = users.Users(5)
@@ -55,11 +54,11 @@ print("Relation still like before\n", admin.edges)
 admin.accept_relation(1,0)
 print("Request accepted:\n", admin.edges, "\n")
 
-weight = relation.Parent
+weight = users.relation.Parent
 admin.add_relation(sender_id=1, receiver_id=0, weight=weight)
 print("Request sent as", weight)
 print("Relation still like before\n", admin.edges)
 admin.accept_relation(1,0)
-print("Request accepted:\n", admin.edges)   # didn't work parent & child :/
+print("Request accepted:\n", admin.edges)   
 admin.remove_relation(1,0)
 print("Relation Removed: \n", admin.edges, "\n")
