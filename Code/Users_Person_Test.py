@@ -32,7 +32,8 @@ admin.Users[0].set_password("1234")
 print(admin.Users[0].get_password())
 
 # post
-print ("\nPost Testing: \n")
+print ("\nPOST TESTING:")
+print("--------------")
 admin.add_post(post.Post("test text", 1), 1)
 print(admin.Posts[0].post_view())
 print(admin.post_view(0), "\n")
@@ -46,8 +47,8 @@ admin.Posts[0].delete_comment(comment_count=1)
 print(admin.Posts[0].post_view())
 
 # adding and removing people
-print ("Testing people's relation:\n")
-
+print ("TESTING PEOPLE'S RELATIONS:")
+print("----------------------------")
 admin.add_relation(sender_id=1, receiver_id=0)
 print("Request sent as friend - default")
 print("Relation still like before\n", admin.edges)
@@ -59,6 +60,16 @@ admin.add_relation(sender_id=1, receiver_id=0, weight=weight)
 print("Request sent as", weight)
 print("Relation still like before\n", admin.edges)
 admin.accept_relation(1,0)
-print("Request accepted:\n", admin.edges)   
+print("Request accepted:\n", admin.edges)
 admin.remove_relation(1,0)
 print("Relation Removed: \n", admin.edges, "\n")
+
+# show friends & search
+print("TESTING SHOW FRIENDS:")
+print("--------------------")
+admin.add_relation(sender_id=1, receiver_id=0, weight = 5)
+admin.accept_relation(1,0)
+print("User with ID 0 friends are: ")
+admin.show_friends(0)   #problem with id = 0 >> edges = 0 also
+print("User with ID 1 friends are: ")
+admin.show_friends(1)
