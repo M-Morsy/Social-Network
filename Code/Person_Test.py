@@ -2,7 +2,7 @@ import Person as person
 # from Person import *
 
 # person adding and getters
-p1 = person.Person("ahmed", "hamada@gmail.com", "ahm;ol")
+p1 = person.Person("ahmed", "hamada@gmail.com", "ahmol")
 print(p1.get_id())
 print(p1.get_name())
 print(p1.get_email())
@@ -30,3 +30,7 @@ print(p2.get_posts_ids())
 
 # print (Person.name) >> error
 # print(Person.dict)
+
+# ** test age & location **#
+
+print(p1.get_name(), "'s age is ", p1.get_age())

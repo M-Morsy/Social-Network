@@ -25,6 +25,7 @@ class Users(person.Person, post.Post):
     edges = []  # [[0 for x in range(maxUsers)] for y in range(maxUsers)] # all connection between users
     marks = [0 for x in range(maxUsers)]  # mark user when search about special one
     Posts = []  # array of post
+    Groups = []  # array of groups
 
     # ** Constructor & Destrcutor ** #
     def __init__(self, maxUsers):  # set the value of max users
@@ -32,7 +33,7 @@ class Users(person.Person, post.Post):
         for row in range(self.maxUsers):
             self.edges.append([])
             for col in range(self.maxUsers):
-                self.edges[row].append(0)
+                self.edges[row].append(-1)
 
     def __del__(self):  # nothing to do
         print("users: ", self.Users)
@@ -72,8 +73,6 @@ class Users(person.Person, post.Post):
         row = self.IndexIs(fromPesron)
         col = self.IndexIs(toPerson)
         self.edges[row][col] = weight
-        print(weight)
-        print(weight == relation.Parent)
         if weight is relation.Parent:
             self.edges[col][row] = relation.Child
 
@@ -119,11 +118,11 @@ class Users(person.Person, post.Post):
 
     # **post** #
     def add_post(self, post, user_id):
+        self.Users[user_id].add_post_id(self.num_posts)
         self.num_posts += 1
         self.Posts.append(post)
-        self.Users[user_id].add_post_id(self.num_posts)
 
-    # ** post getters ** #
+    # post getters
     def get_text(self, post_id):
         return self.Posts[post_id].get_text()
 
@@ -133,7 +132,6 @@ class Users(person.Person, post.Post):
     # I believe this can't be used here !
     def get_post_id(self, post_id):
         post.get_Post_id(post_id)
-        pass
 
     def get_posts_ids(self, user_id):
         return self.Users[user_id].get_posts_ids()
@@ -141,10 +139,14 @@ class Users(person.Person, post.Post):
     # post view for all the posts of that user >> timeline !
     def get_posts(self, user_id):
         posts_ids = self.Users[user_id].get_posts_ids()
-        for i in range(posts_ids):
-            return self.Posts[posts_ids[i]].Post_view()
+        posts_num = posts_ids.__len__()
+        if posts_num > 0:
+            for i in posts_ids:
+                return self.Posts[posts_ids[i]].post_view()
+        else:
+            return "NO posts from user", user_id
 
-    # ** post setters ** #
+    # post setters
     def set_post_id(self, post_id):
         post.set_Post_id(post_id)
 
@@ -167,7 +169,7 @@ class Users(person.Person, post.Post):
     def get_comments_num(self, post_id):
         self.Posts[post_id].get_comments_num()
 
-    # Operation on a group
+    # ** Operation on a group ** #
     def add_relation(self, sender_id, receiver_id, weight=relation.Friend):
         self.Users[sender_id].requests_sent[receiver_id] = weight   # save in sender that he/she sent
         if weight == relation.Parent:
@@ -178,7 +180,6 @@ class Users(person.Person, post.Post):
 
         else:
             self.Users[receiver_id].requests_received[sender_id] = weight
-        pass
 
     def accept_relation(self, sender_id, receiver_id):
         # check if weight is the same at both
@@ -187,27 +188,76 @@ class Users(person.Person, post.Post):
         # we need try & except here
         del self.Users[sender_id].requests_sent[receiver_id]
         del self.Users[receiver_id].requests_received[sender_id]
-        pass
 
     def reject_relation(self, sender_id, receiver_id):
         # we need try & except here
         del self.Users[sender_id].requests_sent[receiver_id]
         del self.Users[receiver_id].requests_received[sender_id]
-        pass
 
     def remove_relation (self, person_one, person_two):
         self.remove_edge(self.Users[person_one], self.Users[person_two])
-        pass
 
-    def search_friends (self):
-        pass
+    def show_sent_requests(self, user_id):
+        return self.Users[user_id].requests_sent
 
-    def show_friends (self):
-        pass
+    def show_received_requests (self, user_id):
+        return self.Users[user_id].requests_received
 
-    def show_friends_posts (self):
-        pass
+    def search_friends(self, user_id, taget_id):
+        id_list = list()
+        id_list = self.edges[user_id]
+        return id_list.index(taget_id)
+
+    def show_friends(self, user_id):
+        # to be changed later >> when id is more complex function: id_to_index(id = user_id) & vice versa
+        id_list = self.edges[user_id]
+        count = 0
+        friends_list =[]
+        # search in adj matrix row for that user_id
+        for i in id_list:
+            if type(i) == relation or (type(i) == int and i >= 0):
+                j = count
+                friends_list.append(self.Users[j].get_info())
+            count += 1
+        friends_number = friends_list.__len__()
+        if friends_number > 0:
+            if friends_number == 1:
+                #  1 friend
+                print(friends_number, "friend")
+                print(friends_list)
+            else:
+                #  2 or more friendS
+                print(friends_number, "friends")
+                print(friends_list)
+        else:
+            print("No Friends")
+
+    def show_friends_posts (self, user_id):
+        id_list = self.edges[user_id]
+        count = 0
+        friends_list = []
+        print("Posts from user", user_id, "friends are:")
+        # search in adj matrix row for that user_id
+        for i in id_list:
+            if type(i) == relation or (type(i) == int and i >= 0):
+                j = count
+                friends_list.append(self.Users[j].get_id())
+            count += 1
+        friends_number = friends_list.__len__()
+        print("friends list:", friends_list)
+        printed_posts=[]
+        if friends_number > 0:
+            for i in friends_list:
+                print("from user: ", i)
+                print(self.get_posts(i))
+
+        else:
+            print("this user has no friends")
 
     def bounded_search (self):
         # Search for some one who is not my friend (by email or ID?)
         pass
+
+    # ** Speed Access & Update Time ** #
+
+    # ** Extract trees and graphs ** #

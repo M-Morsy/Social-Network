@@ -13,7 +13,6 @@ class Person:
 
     # ** Constructor & Destructor **##
     def __init__(self, name, email, password, age=None, location=None, gender=None):
-        Person.Count += 1
         self.ID = self.Count
         self.name = name
         self.email = email
@@ -26,6 +25,7 @@ class Person:
         self.admin = []
         self.requests_sent = {}
         self.requests_received = {}
+        Person.Count += 1
 
     def __del__(self):
         print("person: ", self.name, "with ID: ", self.ID, "died")
@@ -44,7 +44,16 @@ class Person:
     def get_password(self):
         return self.password
 
-    def get_posts_ids (self):
+    def get_age(self):
+        return self.age
+
+    def get_location(self):
+        return self.location
+
+    def get_gender(self):
+        return self.gender
+
+    def get_posts_ids(self):
         return self.posts
 
     def get_groups_ids (self):
@@ -78,19 +87,24 @@ class Person:
     # ** setters **#
     def set_id(self, ID):
         self.ID = ID
-        # self.dict['ID'].append(ID)
 
     def set_name(self, name):
         self.name = name
-        # self.dict['Name'].append(name)
 
     def set_email(self, email):
         self.email = email
-        # self.dict['Email'].append(email)
 
     def set_password(self, password):
         self.password = password
-        # self.dict['Password'].append(password)
+
+    def set_age(self, age):
+        self.age = age
+
+    def set_location(self, location):
+        self.location = location
+
+    def set_gender(self, gender):
+        self.gender = gender
 
     # ** adding **##
     def add_post_id(self, post_id):

@@ -1,11 +1,11 @@
 class Post:
-    post_id = 0
+    post_count = 0
    
     def __init__ (self, text, user_id):
         self.text = text
         self.user_id = user_id
-        Post.post_id += 1
-        self.post_id = Post.post_id
+        self.post_id = Post.post_count
+        Post.post_count += 1
         self.Comments = []
 
     def __del__(self):
