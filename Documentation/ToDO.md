@@ -13,11 +13,11 @@ network
 * [ ] Reload all saved data into program
 
 ## Operations on one group
--[x] Add, remove friends  
--[x] Add, remove siblings  
--[x] Search in my friends  
--[x] Show friends posts  
--[ ] Bounded Search for some one who is not my friend (by email or ID?)  
+* [x] Add, remove friends  
+* [x] Add, remove siblings  
+* [x] Search in my friends  
+* [x] Show friends posts  
+* [ ] Bounded Search for some one who is not my friend (by email or ID?)  
 
 
 ## Error handeling
