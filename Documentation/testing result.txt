@@ -1,0 +1,205 @@
+/usr/bin/python3.6 "/home/mohamed/Social Network/Social-Network/Code/Users_Person_Test.py"
+True
+False
+0
+5
+0
+user number 1 name is hamda
+2
+x= 1
+True
+[[-1, -1, -1, -1, -1], [-1, -1, -1, -1, -1], [-1, -1, -1, -1, -1], [-1, -1, -1, -1, -1], [-1, -1, -1, -1, -1]]
+[[-1, 20, -1, -1, -1], [20, -1, -1, -1, -1], [-1, -1, -1, -1, -1], [-1, -1, -1, -1, -1], [-1, -1, -1, -1, -1]]
+20
+ahmed
+ahm;ol
+1234
+
+POST TESTING:
+--------------
+test text
+
+
+test text
+
+
+
+test text
+
+     0- 0: my first comment
+
+
+test text
+
+     0- 0: my first comment
+
+     1- 0: my second comment
+
+
+test text
+
+     0- 0: my first comment
+
+
+TESTING PEOPLE'S RELATIONS:
+----------------------------
+Request sent as friend - default
+Relation still like before
+ [[-1, 20, -1, -1, -1], [20, -1, -1, -1, -1], [-1, -1, -1, -1, -1], [-1, -1, -1, -1, -1], [-1, -1, -1, -1, -1]]
+Request accepted:
+ [[-1, <relation.Friend: 0>, -1, -1, -1], [<relation.Friend: 0>, -1, -1, -1, -1], [-1, -1, -1, -1, -1], [-1, -1, -1, -1, -1], [-1, -1, -1, -1, -1]]
+
+Request sent as relation.Parent
+Relation still like before
+ [[-1, <relation.Friend: 0>, -1, -1, -1], [<relation.Friend: 0>, -1, -1, -1, -1], [-1, -1, -1, -1, -1], [-1, -1, -1, -1, -1], [-1, -1, -1, -1, -1]]
+Request accepted:
+ [[-1, <relation.Parent: 2>, -1, -1, -1], [<relation.Parent: 2>, -1, -1, -1, -1], [-1, -1, -1, -1, -1], [-1, -1, -1, -1, -1], [-1, -1, -1, -1, -1]]
+Relation Removed:
+ [[-1, 0, -1, -1, -1], [0, -1, -1, -1, -1], [-1, -1, -1, -1, -1], [-1, -1, -1, -1, -1], [-1, -1, -1, -1, -1]]
+
+TESTING SHOW FRIENDS:
+--------------------
+
+User with ID 0 friends are:
+1 friend
+[{'ID': 1, 'name': 'hamda', 'email': 'ham@gmail.com', 'password': 'hamadaa25', 'age': None, 'location': None, 'gender': None, 'groups': [], 'posts': [0], 'admin': [], 'requests_sent': {}, 'requests_received': {}}]
+
+User with ID 1 friends are:
+1 friend
+[{'ID': 0, 'name': 'ahmed', 'email': 'hamada@gmail.com', 'password': '1234', 'age': None, 'location': None, 'gender': None, 'groups': [], 'posts': [], 'admin': [], 'requests_sent': {}, 'requests_received': {}}]
+
+user number 2 name is noFriend
+User with ID 2 friends are:
+No Friends
+
+user number 3 name is ManyFriends
+User with ID 3 friends are:
+No Friends
+
+Person with ID 3 sent requests: {0: <relation.Friend: 0>, 1: <relation.Friend: 0>, 2: <relation.Friend: 0>}
+
+User with ID 3 friends are:
+3 friends
+[{'ID': 0, 'name': 'ahmed', 'email': 'hamada@gmail.com', 'password': '1234', 'age': None, 'location': None, 'gender': None, 'groups': [], 'posts': [], 'admin': [], 'requests_sent': {}, 'requests_received': {}}, {'ID': 1, 'name': 'hamda', 'email': 'ham@gmail.com', 'password': 'hamadaa25', 'age': None, 'location': None, 'gender': None, 'groups': [], 'posts': [0], 'admin': [], 'requests_sent': {}, 'requests_received': {}}, {'ID': 2, 'name': 'noFriend', 'email': 'no_fr@gmail.com', 'password': 'NoFriendsAtall', 'age': None, 'location': None, 'gender': None, 'groups': [], 'posts': [], 'admin': [], 'requests_sent': {}, 'requests_received': {}}]
+
+
+TESTING SHOW FRIENDS POSTS:
+--------------------
+Posts from user 0 friends are:
+friends list: [1, 3]
+from user:  1
+test text
+
+     0- 0: my first comment
+
+
+from user:  3
+('NO posts from user', 3)
+
+Posts from user 1 friends are:
+friends list: [0, 3]
+from user:  0
+('NO posts from user', 0)
+from user:  3
+('NO posts from user', 3)
+
+Posts from user 2 friends are:
+friends list: [3]
+from user:  3
+('NO posts from user', 3)
+
+Posts from user 3 friends are:
+friends list: [0, 1, 2]
+from user:  0
+('NO posts from user', 0)
+from user:  1
+test text
+
+     0- 0: my first comment
+
+
+from user:  2
+('NO posts from user', 2)
+
+users:  [<Person.Person object at 0x7f67144e6cc0>, <Person.Person object at 0x7f67144e6d30>, <Person.Person object at 0x7f6714501a20>, <Person.Person object at 0x7f6714501a90>]
+person:  ahmed with ID:  0 died
+person:  ManyFriends with ID:  3 died
+person:  noFriend with ID:  2 died
+person:  hamda with ID:  1 died
+
+Process finished with exit code 0
+
+*****************************************
+/usr/bin/python3.6 "/home/mohamed/Social Network/Social-Network/Code/Person_Test.py"
+0
+ahmed
+hamada@gmail.com
+ahmol
+{'ID': 0, 'name': 'ahmed', 'email': 'hamada@gmail.com', 'password': 'ahmol', 'age': None, 'location': None, 'gender': None, 'groups': [], 'posts': [], 'admin': [], 'requests_sent': {}, 'requests_received': {}}
+ham@gmail.com
+1
+hamda
+hamadaa25
+{'ID': 1, 'name': 'hamda', 'email': 'ham@gmail.com', 'password': 'hamadaa25', 'age': None, 'location': None, 'gender': None, 'groups': [], 'posts': [], 'admin': [], 'requests_sent': {}, 'requests_received': {}}
+Count =  2
+added post ID 2
+[2, 10]
+1
+removed post ID 2
+[10]
+ahmed 's age is  None
+person:  ahmed with ID:  0 died
+person:  hamda with ID:  1 died
+
+Process finished with exit code 0
+
+****************************************
+/usr/bin/python3.6 "/home/mohamed/Social Network/Social-Network/Code/post test.py"
+el so7ab fi agaza
+yalla nro7 el so5na
+
+     0- 8: mashy
+
+     1- 36: la fakss
+
+     2- 98: msh fady
+
+     3- 125: edited comment
+
+     4- 98: fih final bokra!
+
+     5- 36: ya 7ywan ya mot5lf.. enta yatrash
+
+
+el so7ab fi agaza
+
+     0- 200: let's see
+
+
+6
+
+TESTING INTEGRATION BETWEEN POST AND COMMENT:
+----------------------------------------------
+comment 0 in post1 text:  mashy
+comment 1 in post1 global id:  1
+comment 1 in post1 local id:  1
+comment 0 in post2 global id:  6
+comment 0 in post2 local id:  0
+<bound method Comment.get_comment_id of <Post.Comment object at 0x7f2c1fe6c2b0>>
+
+TESTING THE TIME ATTRIBUTE:
+------------------------------
+first post time is:  2018-05-03 14:12:21.945282
+second post time is:  2018-05-03 14:12:21.945363
+
+TESTING TIME COMPARISONS:
+------------------------------
+post1.time > post2.time:  False
+post1.time < post2.time:  True
+post1.time == post2.time: False
+type of time is:  <class 'str'>
+comment 0 on post 1 time with local id:  2018-05-03 14:12:21.945322
+comment 0 on post 2 time with local id:  2018-05-03 14:12:21.945376
+
+Process finished with exit code 0
+
