@@ -22,7 +22,7 @@ class Users(person.Person):
     maxUsers = 0  # Max number of users in the site we can deal with
     num_posts = 0  # Actual number of posts in the graph
     Users = [0 for x in range(maxUsers)]  # all users
-    edges = []  # [[0 for x in range(maxUsers)] for y in range(maxUsers)] # all connection between users
+    edges = [[0 for x in range(maxUsers)] for y in range(maxUsers)] # all connection between users
     marks = [0 for x in range(maxUsers)]  # mark user when search about special one
     Posts = []  # array of post
     Groups = []  # array of groups
@@ -73,15 +73,23 @@ class Users(person.Person):
         row = self.IndexIs(fromPesron)
         col = self.IndexIs(toPerson)
         self.edges[row][col] = weight
-        if weight is relation.Parent:
-            self.edges[col][row] = relation.Child
-
-        elif weight is relation.Child:
+        if weight is 0:
+            self.edges[col][row] = relation.Friend 
+            self.edges[row][col] = relation.Friend
+        elif weight is 3:
             self.edges[col][row] = relation.Parent
-
+            self.edges[row][col] = relation.Child
+        elif weight is 2:
+            self.edges[col][row] = relation.Child
+            self.edges[row][col] = relation.Parent
+        elif weight is 4:
+            self.edges[col][row] = relation.Relative
+            self.edges[row][col] = relation.Relative
+        elif weight is 1:
+            self.edges[col][row] = relation.Sibling
+            self.edges[row][col] = relation.Sibling
         else:
-           self.edges[col][row] = weight
-        """Not working for child & parent"""
+           self.edges[col][row] = weight #for other relations
 
     def remove_edge(self, from_person, to_person): # remove connection between two users
         row = self.IndexIs(from_person)
