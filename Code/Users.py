@@ -16,7 +16,7 @@ class relation(Enum):
     Child = 3
     Relative = 4
 
-class Users(person.Person, post.Post):
+class Users(person.Person):
     # ** Data ** #
     numUsers = 0  # Actual number of users in the site
     maxUsers = 0  # Max number of users in the site we can deal with
