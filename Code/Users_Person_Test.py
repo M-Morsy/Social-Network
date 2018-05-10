@@ -73,7 +73,7 @@ print("\nUser with ID 0 friends are: ")
 admin.show_friends(0)   #  problem with id = 0 >> edges = 0 also
 print("\nUser with ID 1 friends are: ")
 admin.show_friends(1)
-admin.AddUser(person.Person("noFriend", "no_fr@gmail.com", "NoFriendsAtall"))
+admin.AddUser(person.Person("lowFriend", "low_fr@gmail.com", "lowFriends"))
 print("\nuser number 2 name is", admin.Users[2].get_name())
 print("User with ID 2 friends are: ")
 admin.show_friends(2)
@@ -93,6 +93,8 @@ print("\nUser with ID 3 friends are: ")
 admin.show_friends(3)
 print("\n")
 
+admin.AddUser(person.Person("noFriend", "no_fr@gmail.com", "NoFriendsAtall"))
+
 print("TESTING SHOW FRIENDS POSTS:")
 print("--------------------")
 admin.show_friends_posts(0)# Not working
@@ -103,3 +105,11 @@ admin.show_friends_posts(2)
 print()
 admin.show_friends_posts(3)
 print()
+
+# visualize
+print("TESTING VISUALIZATION:")
+print("--------------------")
+admin.show_friends(2)
+admin.show_graph()
+print()
+

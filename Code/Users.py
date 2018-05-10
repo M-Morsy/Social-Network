@@ -7,6 +7,8 @@ Created on Fri Apr 20 15:05:17 2018
 import Person as person
 import Post as post
 from enum import Enum
+import matplotlib.pyplot as plt
+import networkx as nx
 
 
 class relation(Enum):
@@ -262,6 +264,37 @@ class Users(person.Person):
         else:
             print("this user has no friends")
 
+    def show_relation_string(self, id1, id2):
+
+        weight = self.edges[id1][id2]
+        if weight is 0:
+            return "Friends"
+        elif weight is 3:
+            return "Child"
+        elif weight is 2:
+            return "Parent"
+        elif weight is 4:
+            return "Relatives"
+        elif weight is 1:
+            return "Siblings"
+        else:
+            return weight
+
+    def show_relation_number(self, id1, id2):
+        weight = self.edges[id1][id2]
+        if weight is 0 or weight is relation.Friend:
+            return 0
+        elif weight is 3 or weight is relation.Child:
+            return 3
+        elif weight is 2 or weight is relation.Parent:
+            return 2
+        elif weight is 4 or weight is relation.Relative:
+            return 4
+        elif weight is 1 or weight is relation.Sibling:
+            return 1
+        else:
+            return weight
+
     def bounded_search (self):
         # Search for some one who is not my friend (by email or ID?)
         pass
@@ -269,3 +302,28 @@ class Users(person.Person):
     # ** Speed Access & Update Time ** #
 
     # ** Extract trees and graphs ** #
+
+    # ** visualize current graph ** #
+
+    def show_graph(self):
+        G = nx.Graph()
+        ids = {}
+        names = {}
+        for i in range(self.edges.__len__()):
+            G.add_node(i)
+            for j in range(self.edges.__len__()):
+                G.nodes[i]['name'] = self.Users[i].name
+                names[i] = self.Users[i].name
+                if self.edges[i][j] != -1:
+                    G.add_edge(i, j)
+                    G.nodes[j]['name'] = self.Users[j].name
+                    G[i][j]['w'] = self.show_relation_number(i,j)
+                    '''parent and child returns 2 & 3 but graph is not directed'''
+
+        pos = nx.spring_layout(G)
+        nx.draw_networkx_nodes(G, pos)
+        nx.draw_networkx_edges(G, pos)
+        nx.draw_networkx_labels(G, pos, names)
+        nx.draw_networkx_edge_labels(G, pos)
+        plt.show()
+        pass
