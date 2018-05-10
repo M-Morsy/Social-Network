@@ -6,7 +6,7 @@ Created on Mon Apr 23 21:40:59 2018
 """
 import json
 
-def dfs (mylist, data, users, start = 0):
+'''def dfs (mylist, data, users, start = 0):
     marked = [False for i in range (len(mylist))]
     dfs_in(mylist, marked, start, users, data)
     
@@ -26,7 +26,7 @@ def dfs_in (mylist, marked, start, users, data):
     for x in mylist[index]:
         if marked[x.IndexIs] == False:
             dfs_in(mylist, marked, x)
-    #POST
+    #POST'''
             
             
             
@@ -35,9 +35,20 @@ def save(graph) :
     data["numUsers"]= graph.numUsers 
     data["maxUsers"] = graph.maxUsers
     data["num_posts"] = graph.num_posts 
-    users = graph.get_users()
-    data["users"] = []
-    dfs(graph.edges, data, users)
+    data["Users"] = []
+    for person in graph.Users:
+        data["Users"].append({"name":person.name, "email":person.email, "password":person.password,
+            "age":person.age, "location":person.location, "gender":person.gender,
+            "groups":person.groups, "posts":person.posts, "admin": person.admin})
+    data["edges"]= graph.edges
+    data["Posts"]= []
+    for post in graph.Posts:
+        data["Posts"].append({"text":post.text, "user_id":post.user_id, "post_id":post.post_id,
+            "time":post.time, "Comments":[]})
+        for comment in post.Comments:
+            data["Posts"][-1]["Comments"].append({"text":comment.text, "user_id":comment.user_id,
+                "post_id":comment.post_id, "time":str(comment.time), "comment_id":comment.comment_id})
+    
     with open('users_data.json', 'w') as f:
         json.dump(data, f)
     
