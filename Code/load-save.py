@@ -6,23 +6,21 @@ Created on Mon Apr 23 21:40:59 2018
 """
 import json
 
-def dfs (mylist, data, start = 0):
+def dfs (mylist, data, users, start = 0):
     marked = [False for i in range (len(mylist))]
-    dfs_in(mylist, marked, start, data)
+    dfs_in(mylist, marked, start, users, data)
     
     
-def dfs_in (mylist, marked, start, data):
+def dfs_in (mylist, marked, start, users, data):
     index = start.IndexIs
     #PRE
-    data["users"].append({"name":start.get_name(),"Email":start.get_Email(), 
-        "password":start.get_password(), "ID":start.get_ID(),
-        "friends":mylist[index], "posts":[]})
-    num = len(data["users"])
-    for post in start.posts:
-        data["users"][num-1]["posts"].append({"text":post.text, "comments":[]})
-        num1 = len(data["users"][num-1]["posts"])
+    data["users"].append({"name":users[start].get_name(),"Email":users[start].get_Email(), 
+        "password":users[start].get_password(), "ID":users[start].get_ID(),
+        "friends":mylist[start], "posts":[]})
+    for post in users[start].posts:
+        data["users"][-1]["posts"].append({"text":post.text, "comments":[]})
         for comment in post.comments:
-            data["users"][num-1]["posts"][num1-1]["comments"].append({"text":comment.text, "user_ID":comment.user_ID})
+            data["users"][-1]["posts"][-1]["comments"].append({"text":comment.text, "user_ID":comment.user_ID})
     #SEARCH
     marked[index] = True
     for x in mylist[index]:
@@ -34,9 +32,12 @@ def dfs_in (mylist, marked, start, data):
             
 def save(graph) :
     data = {}
-    data["max_users"] = graph.getMaxUsers()
+    data["numUsers"]= graph.numUsers 
+    data["maxUsers"] = graph.maxUsers
+    data["num_posts"] = graph.num_posts 
+    users = graph.get_users()
     data["users"] = []
-    dfs(graph.edges, data)
+    dfs(graph.edges, data, users)
     with open('users_data.json', 'w') as f:
         json.dump(data, f)
     
