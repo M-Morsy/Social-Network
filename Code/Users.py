@@ -4,12 +4,12 @@ Created on Fri Apr 20 15:05:17 2018
 
 @author: shimaa
 """
-import Person as person
-import Post as post
+import Code.Person as person
+import Code.Post as post
 from enum import Enum
 import matplotlib.pyplot as plt
 import networkx as nx
-
+import Code.hashing as hashing
 
 class relation(Enum):
     Friend = 0
@@ -28,6 +28,13 @@ class Users(person.Person):
     marks = [0 for x in range(maxUsers)]  # mark user when search about special one
     Posts = []  # array of post
     Groups = []  # array of groups
+
+    # Hash Tables For Fast Searching #
+    nameTable = {}
+    countryTable = {}
+    ageTable = {9: hashing.ageRoot9, 19: hashing.ageRoot19, 29: hashing.ageRoot29, 39: hashing.ageRoot39,
+      49: hashing.ageRoot49, 59: hashing.ageRoot59, 69: hashing.ageRoot69, 79: hashing.ageRoot79, 89: hashing.ageRoot89,
+      99: hashing.ageRoot99, 109: hashing.ageRoot109, 119: hashing.ageRoot119}
 
     # ** Constructor & Destrcutor ** #
     def __init__(self, maxUsers):  # set the value of max users
@@ -69,6 +76,9 @@ class Users(person.Person):
     def AddUser(self, person):  # add new user
         self.Users.append(person)
         self.marks.append(0)
+        if person.age != None:
+           ageRange = hashing.ageHashFunc(person.age)
+           self.ageTable[ageRange].insert(person.get_age(),person.get_id())
         self.numUsers += 1
 
     def AddEdge(self, fromPesron, toPerson, weight):  # add new connection
