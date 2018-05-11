@@ -1,4 +1,4 @@
-# Binary Tree Class
+# ** Binary Tree Class ** #
 class Node:
 
     def __init__(self, data , id):
@@ -38,7 +38,9 @@ class Node:
         if self.left:
             self.left.PrintTree()
 
-# Hash Tables For Fast Searching #
+# ** Hash Tables For Fast Searching ** #
+
+# age binary trees
 ageRoot9 = Node(int(9 / 2) + 1, -1)
 ageRoot19 = Node(int(19 / 2) + 1, -1)
 ageRoot29 = Node(int(29 / 2) + 1, -1)
@@ -51,6 +53,20 @@ ageRoot89 = Node(int(89 / 2) + 1, -1)
 ageRoot99 = Node(int(99 / 2) + 1, -1)
 ageRoot109 = Node(int(109 / 2) + 1, -1)
 ageRoot119 = Node(int(119 / 2) + 1, -1)
+
+# name binary trees
+nameRoot0 = Node("l",-1)
+nameRoot1 = Node("m",-1)
+nameRoot2 = Node("n",-1)
+nameRoot3 = Node("o",-1)
+nameRoot4 = Node("p",-1)
+nameRoot5 = Node("q",-1)
+nameRoot6 = Node("r",-1)
+nameRoot7 = Node("s",-1)
+nameRoot8 = Node("t",-1)
+nameRoot9 = Node("u",-1)
+nameRoot10 = Node("v",-1)
+nameRoot11 = Node("w",-1)
 
 # ** HashTables functionality ** #
 def ageHashFunc(age):
@@ -104,6 +120,12 @@ def addNodeToAgeTree(age, id, personAge):
         ageRoot109.insert(personAge, id)
     else:
         ageRoot119.insert(personAge, id)
+def nameHashFunc(name):
+    sum = 0
+    for char in name:
+        sum += ord(char)
+    return  sum%12
+
 """
 root = Node(10,-1)
 root.insert(5,1)
@@ -113,4 +135,7 @@ root.insert(10,0)
 ww = ageHashFunc(5)
 addNodeToAgeTree(9,1,5)
 ageRoot9.PrintTree()
+# 0,1,2
+a = nameHashFunc("waleed")
+print(a)
 """
