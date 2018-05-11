@@ -29,15 +29,6 @@ class Users(person.Person):
     Posts = []  # array of post
     Groups = []  # array of groups
 
-    # Hash Tables For Fast Searching #
-    nameTable = {}
-    countryTable = {0: hashing.nameRoot0, 1: hashing.nameRoot1, 2: hashing.nameRoot2, 3: hashing.nameRoot3, 4: hashing.nameRoot4,
-                    5: hashing.nameRoot5, 6: hashing.nameRoot6, 7: hashing.nameRoot7, 8: hashing.nameRoot8, 9: hashing.nameRoot9,
-                    10: hashing.nameRoot10, 11: hashing.nameRoot11}
-    ageTable = {9: hashing.ageRoot9, 19: hashing.ageRoot19, 29: hashing.ageRoot29, 39: hashing.ageRoot39,
-                49: hashing.ageRoot49, 59: hashing.ageRoot59, 69: hashing.ageRoot69, 79: hashing.ageRoot79,
-                89: hashing.ageRoot89, 99: hashing.ageRoot99, 109: hashing.ageRoot109, 119: hashing.ageRoot119}
-
     # ** Constructor & Destrcutor ** #
     def __init__(self, maxUsers):  # set the value of max users
         self.maxUsers = maxUsers
@@ -80,10 +71,13 @@ class Users(person.Person):
         self.marks.append(0)
         if person.age != None:
            ageRange = hashing.ageHashFunc(person.age)
-           self.ageTable[ageRange].insert(person.get_age(),person.get_id())
+           hashing.ageTable[ageRange].insert(person.get_age(),person.get_id())
         if person.name != None:
             nameRange = hashing.nameHashFunc(person.name)
-            self.nameTable[nameRange].insert(person.get_name(), person.get_id())
+            hashing.nameTable[nameRange].insert(person.get_name(), person.get_id())
+        if person.location != None:
+             countryRange = hashing.nameHashFunc(person.location)
+             hashing.countryTable[countryRange].insert(person.get_location(), person.get_id())
         self.numUsers += 1
 
     def AddEdge(self, fromPesron, toPerson, weight):  # add new connection

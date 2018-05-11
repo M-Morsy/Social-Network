@@ -38,6 +38,51 @@ class Node:
         if self.left:
             self.left.PrintTree()
 
+    def delete(self, key):
+        """ delete the node with the given key and return the
+        root node of the tree """
+
+        if self.id == key:
+            # found the node we need to delete
+
+            if self.right and self.left:
+
+                # get the successor node and its parent
+                [psucc, succ] = self.right._findMin(self)
+
+                # splice out the successor
+                # (we need the parent to do this)
+
+                if psucc.left == succ:
+                    psucc.left = succ.right
+                else:
+                    psucc.right = succ.right
+
+                # reset the left and right children of the successor
+
+                succ.left = self.left
+                succ.right = self.right
+
+                return succ
+
+            else:
+                # "easier" case
+                if self.left:
+                    return self.left  # promote the left subtree
+                else:
+                    return self.right  # promote the right subtree
+        else:
+            if self.key > key:  # key should be in the left subtree
+                if self.left:
+                    self.left = self.left.delete(key)
+                # else the key is not in the tree
+
+            else:  # key should be in the right subtree
+                if self.right:
+                    self.right = self.right.delete(key)
+
+        return self
+
 # ** Hash Tables For Fast Searching ** #
 
 # age binary trees
@@ -67,6 +112,20 @@ nameRoot8 = Node("t",-1)
 nameRoot9 = Node("u",-1)
 nameRoot10 = Node("v",-1)
 nameRoot11 = Node("w",-1)
+
+# country graph
+countryRoot0 = Node("l",-1)
+countryRoot1 = Node("m",-1)
+countryRoot2 = Node("n",-1)
+countryRoot3 = Node("o",-1)
+countryRoot4 = Node("p",-1)
+countryRoot5 = Node("q",-1)
+countryRoot6 = Node("r",-1)
+countryRoot7 = Node("s",-1)
+countryRoot8 = Node("t",-1)
+countryRoot9 = Node("u",-1)
+countryRoot10 = Node("v",-1)
+countryRoot11 = Node("w",-1)
 
 # ** HashTables functionality ** #
 def ageHashFunc(age):
@@ -123,8 +182,20 @@ def addNodeToAgeTree(age, id, personAge):
 def nameHashFunc(name):
     sum = 0
     for char in name:
-        sum += ord(char)
+        sum += ord(char) * 70
     return  sum%12
+
+# Hash Tables For Fast Searching #
+nameTable = {0: nameRoot0, 1: nameRoot1, 2: nameRoot2, 3: nameRoot3, 4: nameRoot4,
+                    5: nameRoot5, 6: nameRoot6, 7: nameRoot7, 8: nameRoot8, 9: nameRoot9,
+                    10: nameRoot10, 11: nameRoot11}
+countryTable = {0: countryRoot0, 1: countryRoot1, 2: countryRoot2, 3: countryRoot3,
+                    4: countryRoot4, 5: countryRoot5, 6: countryRoot6, 7: countryRoot7,
+                    8: countryRoot8, 9: countryRoot9, 10: countryRoot10, 11: countryRoot11}
+ageTable = {9: ageRoot9, 19: ageRoot19, 29: ageRoot29, 39: ageRoot39,
+                49: ageRoot49, 59: ageRoot59, 69: ageRoot69, 79: ageRoot79,
+                89: ageRoot89, 99: ageRoot99, 109: ageRoot109, 119: ageRoot119}
+
 
 """
 root = Node(10,-1)
