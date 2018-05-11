@@ -1,3 +1,4 @@
+import Code.hashing as hashing
 class Person:
     # ** Data ** ##
     """
@@ -89,7 +90,11 @@ class Person:
         self.ID = ID
 
     def set_name(self, name):
+        oldName = hashing.nameHashFunc(self.name)
+        hashing.nameTable[oldName].delete(self.get_id())
         self.name = name
+        newName = hashing.nameHashFunc(self.name)
+        hashing.nameTable[newName].insert(self.name,self.get_id())
 
     def set_email(self, email):
         self.email = email
@@ -98,10 +103,18 @@ class Person:
         self.password = password
 
     def set_age(self, age):
+        oldAge = hashing.ageHashFunc(self.age)
+        hashing.ageTable[oldAge].delete(self.get_id())
         self.age = age
+        newAge = hashing.ageHashFunc(self.age)
+        hashing.ageTable[newAge].insert(self.age,self.get_id())
 
     def set_location(self, location):
+        oldLocation = hashing.nameHashFunc(self.location)
+        hashing.countryTable[oldLocation].delete(self.get_id())
         self.location = location
+        newLocation = hashing.nameHashFunc(self.location)
+        hashing.countryTable[newLocation].insert(self.location,self.get_id())
 
     def set_gender(self, gender):
         self.gender = gender
