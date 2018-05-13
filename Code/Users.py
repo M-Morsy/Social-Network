@@ -121,12 +121,21 @@ class Users(person.Person):
         index = self.IndexIs(pesron)
         return bool(self.marks[index])
 
-    # searching algorithm
+    # ** searching algorithm ** #
     def DepthFirstSearch(self, startUser, endUser):
-        print("nothing")
+        pass
 
     def BreadthFirtsSearch(self, startUser, endUser):
-        print("nothing")
+        pass
+
+    def bounded_search (self):
+        # Search for some one who is not my friend (by email or ID?)
+        pass
+
+    def search_by_age(self,age):
+      key = hashing.ageHashFunc()
+      self.ageTable[key]
+
 
     # **post** #
     def add_post(self, post, user_id):
@@ -298,41 +307,35 @@ class Users(person.Person):
         else:
             return weight
 
-    def bounded_search (self):
-        # Search for some one who is not my friend (by email or ID?)
-        pass
-
-    '''
-    # this code depend on graph on node names
-    """
-    graph = {'A': ['B', 'C'],
-             'B': ['C', 'D'],
-             'C': ['D'],
-             'D': ['C'],
-             'E': ['F'],
-             'F': ['C']}
-    """
-    def find_shortest_path(self, start_id, end_id, path=[]):
-        path = path + [start_id]
-        if start_id == end_id:
-            return path
-        shortest = None
-        for node in range(self.edges[start_id]):
-            if node not in path:
-                print(self.edges[start_id])
-                print(node)
-                print()
-                newpath = self.find_shortest_path(node, end_id, path)
-                if newpath:
-                    if not shortest or len(newpath) < len(shortest):
-                        shortest = newpath
-        return shortest
-    '''
-    # ** Speed Access & Update Time ** #
-
     # ** Extract trees and graphs ** #
+    '''
+        # this code depend on graph on node names
+        """
+        graph = {'A': ['B', 'C'],
+                 'B': ['C', 'D'],
+                 'C': ['D'],
+                 'D': ['C'],
+                 'E': ['F'],
+                 'F': ['C']}
+        """
+        def find_shortest_path(self, start_id, end_id, path=[]):
+            path = path + [start_id]
+            if start_id == end_id:
+                return path
+            shortest = None
+            for node in range(self.edges[start_id]):
+                if node not in path:
+                    print(self.edges[start_id])
+                    print(node)
+                    print()
+                    newpath = self.find_shortest_path(node, end_id, path)
+                    if newpath:
+                        if not shortest or len(newpath) < len(shortest):
+                            shortest = newpath
+            return shortest
+        '''
 
-    # ** visualize current graph ** #
+    # ** Visualization ** #
 
     def show_graph(self, with_edges=False):
         g = nx.Graph()
@@ -373,7 +376,7 @@ class Users(person.Person):
                     g.add_edge(i, j)
                     g.nodes[j]['name'] = self.Users[j].name
                     g[i][j]['w'] = self.show_relation_number(i, j)
-                    '''parent and child returns 2 & 3 but graph is not directed'''
+                    
 
         path_list = [p for p in nx.shortest_path(g, source=id_list[0])]  # Target not specified
         l = id_list[1:]
@@ -389,8 +392,3 @@ class Users(person.Person):
         plt.show()
         pass
         '''
-
-    # Hash Function For Searching #
-    def search_by_age(self,age):
-      key = hashing.ageHashFunc()
-      self.ageTable[key]
