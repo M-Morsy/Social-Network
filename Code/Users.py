@@ -11,12 +11,14 @@ import matplotlib.pyplot as plt
 import networkx as nx
 import Code.hashing as hashing
 
+
 class relation(Enum):
     Friend = 0
     Sibling = 1
     Parent = 2
     Child = 3
     Relative = 4
+
 
 class Users(person.Person):
     # ** Data ** #
@@ -83,22 +85,13 @@ class Users(person.Person):
     def AddEdge(self, fromPesron, toPerson, weight):  # add new connection
         row = self.IndexIs(fromPesron)
         col = self.IndexIs(toPerson)
-        self.edges[row][col] = weight
-        if weight is 0:
-            self.edges[col][row] = relation.Friend 
-            self.edges[row][col] = relation.Friend
-        elif weight is 3:
-            self.edges[col][row] = relation.Parent
+        self.edges[col][row]= weight
+        if weight is 3 or weight is relation.Parent:
             self.edges[row][col] = relation.Child
-        elif weight is 2:
-            self.edges[col][row] = relation.Child
+
+        elif weight is 2 or weight is relation.Child:
             self.edges[row][col] = relation.Parent
-        elif weight is 4:
-            self.edges[col][row] = relation.Relative
-            self.edges[row][col] = relation.Relative
-        elif weight is 1:
-            self.edges[col][row] = relation.Sibling
-            self.edges[row][col] = relation.Sibling
+
         else:
            self.edges[col][row] = weight #for other relations
 
@@ -191,13 +184,14 @@ class Users(person.Person):
     # ** Operation on a group ** #
     def add_relation(self, sender_id, receiver_id, weight=relation.Friend):
         self.Users[sender_id].requests_sent[receiver_id] = weight   # save in sender that he/she sent
-        if weight == relation.Parent:
+        if weight == relation.Parent or weight == 2:
             self.Users[receiver_id].requests_received[sender_id] = relation.Child
 
-        elif weight == relation.Child:
+        elif weight == relation.Child or weight == 3:
             self.Users[receiver_id].requests_received[sender_id] = relation.Parent
 
         else:
+
             self.Users[receiver_id].requests_received[sender_id] = weight
 
     def accept_relation(self, sender_id, receiver_id):
@@ -336,6 +330,10 @@ class Users(person.Person):
         nx.draw_networkx_edge_labels(G, pos)
         plt.show()
         pass
+
+    def show_partial_graph(self, id_list):
+        pass
+
     # Hash Function For Searching #
     def search_by_age(self,age):
       key = hashing.ageHashFunc()

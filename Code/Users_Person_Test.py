@@ -68,7 +68,9 @@ print("Relation Removed: \n", admin.edges, "\n")
 print("TESTING SHOW FRIENDS:")
 print("--------------------")
 admin.add_relation(sender_id=1, receiver_id=0, weight = 5)
+# add relation = send friend request
 admin.accept_relation(1,0)
+# accept relation = accept friend request
 print("\nUser with ID 0 friends are: ")
 admin.show_friends(0)   #  problem with id = 0 >> edges = 0 also
 print("\nUser with ID 1 friends are: ")

@@ -17,9 +17,9 @@ p3 = person.Person("Amiya", "amiya@gmail.com", "amiya;o3", 30 , "Russia" , "Fema
 admin.AddUser(p3)
 p4 = person.Person("Russell", "russell@gmail.com", "russell;o4" , 21 , "Brazil" , "Male")
 admin.AddUser(p4)
-p5 = person.Person("Juggornot", "juggornot@gmail.com", "juggornot;o5" ,23, "Bolivia" , "Male")
+p5 = person.Person("Juggornot", "juggornot@gmail.com", "juggornot;o5", 23, "Bolivia" , "Male")
 admin.AddUser(p5)
-p6 = person.Person("Wone", "one_eyed@gmail.com", "one_eyed;o6" ,23, "Angola" , "Male")
+p6 = person.Person("Wone", "one_eyed@gmail.com", "one_eyed;o6", 23, "Angola" , "Male")
 admin.AddUser(p6)
 p7 = person.Person("Muboy", "muboy@gmail.com", "muboy;o7" ,35, "Antarctica" , "Male")
 admin.AddUser(p7)
@@ -73,7 +73,7 @@ p31 = person.Person("Dottie", "dottie@gmail.com", "dottie;o31",39, "Uganda" , "F
 admin.AddUser(p31)
 p32 = person.Person("Winnie", "winnie@gmail.com", "winnie;o32", 70,"Spain" , "Female")
 admin.AddUser(p32)
-p33 = person.Person("Carys", "carys@gmail.com", "carys;o33", "25" , "Female")
+p33 = person.Person("Carys", "carys@gmail.com", "carys;o33", 25, "Female")
 admin.AddUser(p33)
 p34 = person.Person("Adeline", "adeline@gmail.com", "adeline;o34",35, "Usa" , "Female")
 admin.AddUser(p34)
@@ -90,8 +90,6 @@ admin.AddUser(p39)
 p40 = person.Person("Agata", "agata@gmail.com", "agata;o40",36, "France" , "Female")
 admin.AddUser(p40)
 
-
--------------------------------------------------------
 admin.AddUser(person.Person("hamda", "ham@gmail.com", "hamadaa25"))
 
 print(p1.get_id())
@@ -123,4 +121,7 @@ admin.add_comment("my second comment", post_id=0, user_id=0)
 print(admin.Posts[0].post_view())
 
 admin.Posts[0].delete_comment(1)
-print(admin.Posts[0].post_view())`
+print(admin.Posts[0].post_view())
+
+# show graphss
+admin.show_graph()
