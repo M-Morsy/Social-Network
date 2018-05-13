@@ -302,37 +302,93 @@ class Users(person.Person):
         # Search for some one who is not my friend (by email or ID?)
         pass
 
+    '''
+    # this code depend on graph on node names
+    """
+    graph = {'A': ['B', 'C'],
+             'B': ['C', 'D'],
+             'C': ['D'],
+             'D': ['C'],
+             'E': ['F'],
+             'F': ['C']}
+    """
+    def find_shortest_path(self, start_id, end_id, path=[]):
+        path = path + [start_id]
+        if start_id == end_id:
+            return path
+        shortest = None
+        for node in range(self.edges[start_id]):
+            if node not in path:
+                print(self.edges[start_id])
+                print(node)
+                print()
+                newpath = self.find_shortest_path(node, end_id, path)
+                if newpath:
+                    if not shortest or len(newpath) < len(shortest):
+                        shortest = newpath
+        return shortest
+    '''
     # ** Speed Access & Update Time ** #
 
     # ** Extract trees and graphs ** #
 
     # ** visualize current graph ** #
 
-    def show_graph(self):
-        G = nx.Graph()
-        ids = {}
+    def show_graph(self, with_edges=False):
+        g = nx.Graph()
         names = {}
         for i in range(self.edges.__len__()):
-            G.add_node(i)
+            g.add_node(i)
             for j in range(self.edges.__len__()):
-                G.nodes[i]['name'] = self.Users[i].name
+                g.nodes[i]['name'] = self.Users[i].name
                 names[i] = self.Users[i].name
                 if self.edges[i][j] != -1:
-                    G.add_edge(i, j)
-                    G.nodes[j]['name'] = self.Users[j].name
-                    G[i][j]['w'] = self.show_relation_number(i,j)
+                    g.add_edge(i, j)
+                    g.nodes[j]['name'] = self.Users[j].name
+                    g[i][j]['w'] = self.show_relation_number(i,j)
                     '''parent and child returns 2 & 3 but graph is not directed'''
 
-        pos = nx.spring_layout(G)
-        nx.draw_networkx_nodes(G, pos)
-        nx.draw_networkx_edges(G, pos)
-        nx.draw_networkx_labels(G, pos, names)
-        nx.draw_networkx_edge_labels(G, pos)
+        pos = nx.spring_layout(g)
+        nx.draw_networkx_nodes(g, pos)
+        nx.draw_networkx_edges(g, pos)
+        nx.draw_networkx_labels(g, pos, names)
+        if with_edges:
+            nx.draw_networkx_edge_labels(g, pos)
         plt.show()
         pass
 
+    '''
+    def is_sub_list(self, g, l):
+        return all(True if x in g else False for x in l)
+
     def show_partial_graph(self, id_list):
+        g = nx.Graph()
+        names = {}
+        for i in range(self.edges.__len__()):
+            g.add_node(i)
+            for j in range(self.edges.__len__()):
+                g.nodes[i]['name'] = self.Users[i].name
+                names[i] = self.Users[i].name
+                if self.edges[i][j] != -1:
+                    g.add_edge(i, j)
+                    g.nodes[j]['name'] = self.Users[j].name
+                    g[i][j]['w'] = self.show_relation_number(i, j)
+                    '''parent and child returns 2 & 3 but graph is not directed'''
+
+        path_list = [p for p in nx.shortest_path(g, source=id_list[0])]  # Target not specified
+        l = id_list[1:]
+        res = [x for x in path_list if self.is_sub_list(x, l)]
+        return res
+        # show the graph
+        g = nx.Graph()
+        pos = nx.spring_layout(g)
+        nx.draw_networkx_nodes(g, pos)
+        nx.draw_networkx_edges(g, pos)
+        nx.draw_networkx_labels(g, pos, names)
+        nx.draw_networkx_edge_labels(g, pos)
+        plt.show()
         pass
+        '''
 
     # Hash Function For Searching #
     def search_by_age(self,age):

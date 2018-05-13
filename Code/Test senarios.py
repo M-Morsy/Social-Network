@@ -124,4 +124,5 @@ admin.Posts[0].delete_comment(1)
 print(admin.Posts[0].post_view())
 
 # show graphss
+
 admin.show_graph()

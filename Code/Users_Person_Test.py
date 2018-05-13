@@ -115,3 +115,6 @@ admin.show_friends(2)
 admin.show_graph()
 print()
 
+print("TESTING ALGORITHIMS:")
+
+print(admin.show_partial_graph([1, 3]))
