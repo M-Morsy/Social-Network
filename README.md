@@ -14,11 +14,12 @@
 4. LoadSave.py: To load and save out Network
 5. Users.py: class to hold users' data structure, a graph.  
 with all the related algorithms
-6. Testing files:  
+6. Testing files (some may be removed with time):  
     * Test senarios.py
     * User_Person_Test.py
     * posttest.py
     * Person_Test.py
+    * Relation hints.py
 
 ### Details on each file
 ### Person.py
@@ -90,14 +91,20 @@ This section is intersted in visualizing graphs of sub-graphs
 * a list of comments objects
 * each comment have the same attributes as the post  
 #### Also contains some methods:  
-*setters and getters for the attirbutes 
-*delete post  
-*edit the post text  
-*delete comment  
-*edit comment  
-*post view to show the post and its comment contents 
+* setters and getters for the attirbutes 
+* delete post  
+* edit the post text  
+* delete comment  
+* edit comment  
+* post view to show the post and its comment contents 
 
-### 
+#### LoadSave.py
+##### The Save function  
+Our network system relys on a graph containing all the users of the system connected together, this function take alll the users data and attributes like name, age, gender, posts, comments,.. etc. and save it in a dictionary within a json file to use it another time.  
+
+##### The Load function  
+it takes back the saved data from the json file. like all the users and their connections and data. and load it into its suitable data structure to become usable.
+
 ## Future work
 1. Groups class
 2. registration and authorization system
