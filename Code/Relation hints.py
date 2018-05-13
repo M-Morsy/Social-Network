@@ -1,159 +1,159 @@
-admin.add_relation(sender_id=p1.get_id(), receiver_id=p2.get_id(), weight=users.relation.Parent)
-   admin.accept_relation(p1.get_id(),p2.get_id())
+admin.add_relation(sender_id=1, receiver_id=2, weight=users.relation.Parent)
+   admin.accept_relation(1,2)
    
 
 
-admin.add_relation(sender_id=p2.get_id(), receiver_id=p7.get_id(), weight=users.relation.Friend)
-   admin.accept_relation(p2.get_id(),p7.get_id())
+admin.add_relation(sender_id=2, receiver_id=7, weight=users.relation.Friend)
+   admin.accept_relation(2,7)
    
 
-admin.add_relation(sender_id=p7.get_id(), receiver_id=p6.get_id(), weight=users.relation.Child)
-   admin.accept_relation(p7.get_id(),p6.get_id())
+admin.add_relation(sender_id=7, receiver_id=6, weight=users.relation.Child)
+   admin.accept_relation(7,6)
    
 
-admin.add_relation(sender_id=p6.get_id(), receiver_id=p1.get_id(), weight=users.relation.Relative)
-   admin.accept_relation(p6.get_id(),p1.get_id())
+admin.add_relation(sender_id=6, receiver_id=1, weight=users.relation.Relative)
+   admin.accept_relation(6,1)
    
 
-admin.add_relation(sender_id=p2.get_id(), receiver_id=p8.get_id(), weight=users.relation.Sibling)
-   admin.accept_relation(p2.get_id(),p8.get_id())
+admin.add_relation(sender_id=2, receiver_id=8, weight=users.relation.Sibling)
+   admin.accept_relation(2,8)
    
 
-admin.add_relation(sender_id=p3.get_id(), receiver_id=p8.get_id(), weight=users.relation.Parent)
-   admin.accept_relation(p3.get_id(),p8.get_id())
+admin.add_relation(sender_id=3, receiver_id=8, weight=users.relation.Parent)
+   admin.accept_relation(3,8)
    
 
-admin.add_relation(sender_id=p8.get_id(), receiver_id=p4.get_id(), weight=users.relation.Friends)
-   admin.accept_relation(p8.get_id(),p4.get_id())
+admin.add_relation(sender_id=8, receiver_id=4, weight=users.relation.Friends)
+   admin.accept_relation(8,4)
    
 
-admin.add_relation(sender_id=p4.get_id(), receiver_id=p10.get_id(), weight=users.relation.Parent)
-   admin.accept_relation(p4.get_id(),p10.get_id())
+admin.add_relation(sender_id=4, receiver_id=1, weight=users.relation.Parent)
+   admin.accept_relation(4,10)
   
 
-admin.add_relation(sender_id=p5.get_id(), receiver_id=p10.get_id(), weight=users.relation.Child)
-   admin.accept_relation(p5.get_id(),p10.get_id())
-  
+admin.add_relation(sender_id=5, receiver_id=10, weight=users.relation.Child)
+   admin.accept_relation(5,10)
 
-admin.add_relation(sender_id=p9.get_id(), receiver_id=p5.get_id(), weight=users.relation.Friends)
-   admin.accept_relation(p9.get_id(),p5.get_id())
+
+admin.add_relation(sender_id=9, receiver_id=5, weight=users.relation.Friends)
+   admin.accept_relation(9,5)
    
 
-admin.add_relation(sender_id=p6.get_id(), receiver_id=p11.get_id(), weight=users.relation.Friends)
-   admin.accept_relation(p6.get_id(),p11.get_id())
+admin.add_relation(sender_id=6, receiver_id=11, weight=users.relation.Friends)
+   admin.accept_relation(6,11)
    
 
-admin.add_relation(sender_id=p7.get_id(), receiver_id=p12.get_id(), weight=users.relation.Friends)
-   admin.accept_relation(p7.get_id(),p12.get_id())
+admin.add_relation(sender_id=7, receiver_id=12, weight=users.relation.Friends)
+   admin.accept_relation(7,12)
    
 
-admin.add_relation(sender_id=p8.get_id(), receiver_id=p13.get_id(), weight=users.relation.Parent)
-   admin.accept_relation(p8.get_id(),p13.get_id())
+admin.add_relation(sender_id=8, receiver_id=13, weight=users.relation.Parent)
+   admin.accept_relation(8,13)
    
 
-admin.add_relation(sender_id=p14.get_id(), receiver_id=p9.get_id(), weight=users.relation.Friends)
-   admin.accept_relation(p14.get_id(),p9.get_id())
+admin.add_relation(sender_id=14, receiver_id=9, weight=users.relation.Friends)
+   admin.accept_relation(14,9)
    
 
-admin.add_relation(sender_id=p10.get_id(), receiver_id=p15.get_id(), weight=users.relation.Parent)
-   admin.accept_relation(p10.get_id(),p15.get_id())
+admin.add_relation(sender_id=10.get_id(), receiver_id=15., weight=users.relation.Parent)
+   admin.accept_relation(10,15)
    
 
-admin.add_relation(sender_id=p11.get_id(), receiver_id=p20.get_id(), weight=users.relation.Sibling)
-   admin.accept_relation(p11.get_id(),p20.get_id())
+admin.add_relation(sender_id=11, receiver_id=20, weight=users.relation.Sibling)
+   admin.accept_relation(11,20)
    
 
-admin.add_relation(sender_id=p12.get_id(), receiver_id=p16.get_id(), weight=users.relation.Parent)
-   admin.accept_relation(p12.get_id(),p16.get_id())
+admin.add_relation(sender_id=12, receiver_id=16, weight=users.relation.Parent)
+   admin.accept_relation(12,16)
    
 
-admin.add_relation(sender_id=p13.get_id(), receiver_id=p17.get_id(), weight=users.relation.Child)
-   admin.accept_relation(p13.get_id(),p17.get_id())
+admin.add_relation(sender_id=13, receiver_id=17, weight=users.relation.Child)
+   admin.accept_relation(13,17)
    
 
-admin.add_relation(sender_id=p14.get_id(), receiver_id=p18.get_id(), weight=users.relation.Relative)
-   admin.accept_relation(p14.get_id(),p18.get_id())
+admin.add_relation(sender_id=14, receiver_id=18, weight=users.relation.Relative)
+   admin.accept_relation(14,18)
    
 
-admin.add_relation(sender_id=p15.get_id(), receiver_id=p19.get_id(), weight=users.relation.Sibling)
-   admin.accept_relation(p15.get_id(),p19.get_id())
+admin.add_relation(sender_id=15, receiver_id=19, weight=users.relation.Sibling)
+   admin.accept_relation(15,19)
    
 
-admin.add_relation(sender_id=p21.get_id(), receiver_id=p20.get_id(), weight=users.relation.Relative)
-   admin.accept_relation(p21.get_id(),p20.get_id())
+admin.add_relation(sender_id=21, receiver_id=20, weight=users.relation.Relative)
+   admin.accept_relation(21,20)
    
 
-admin.add_relation(sender_id=p16.get_id(), receiver_id=p22.get_id(), weight=users.relation.Friend)
-   admin.accept_relation(p16.get_id(),p22.get_id())
+admin.add_relation(sender_id=16, receiver_id=22, weight=users.relation.Friend)
+   admin.accept_relation(16,22)
    
 
-admin.add_relation(sender_id=p17.get_id(), receiver_id=p23.get_id(), weight=users.relation.Parent)
-   admin.accept_relation(p17.get_id(),p23.get_id())
+admin.add_relation(sender_id=17, receiver_id=23, weight=users.relation.Parent)
+   admin.accept_relation(17,23)
    
 
-admin.add_relation(sender_id=p18.get_id(), receiver_id=p24.get_id(), weight=users.relation.Sibling)
-   admin.accept_relation(p18.get_id(),p24.get_id())
+admin.add_relation(sender_id=18, receiver_id24, weight=users.relation.Sibling)
+   admin.accept_relation(18,24)
    
 
-admin.add_relation(sender_id=p19.get_id(), receiver_id=p25.get_id(), weight=users.relation.Friend)
-   admin.accept_relation(p19.get_id(),p25.get_id())
+admin.add_relation(sender_id=19, receiver_id=25, weight=users.relation.Friend)
+   admin.accept_relation(19,25)
    
 
-admin.add_relation(sender_id=p22.get_id(), receiver_id=p26.get_id(), weight=users.relation.Parent)
-   admin.accept_relation(p22.get_id(),p26.get_id())
+admin.add_relation(sender_id=22, receiver_id=26, weight=users.relation.Parent)
+   admin.accept_relation(22,26)
  
 
 
-admin.add_relation(sender_id=p23.get_id(), receiver_id=p27.get_id(), weight=users.relation.Sibling)
-   admin.accept_relation(p23.get_id(),p27.get_id())
+admin.add_relation(sender_id=23, receiver_id=27, weight=users.relation.Sibling)
+   admin.accept_relation(23,27)
    
 
-admin.add_relation(sender_id=p24.get_id(), receiver_id=p28.get_id(), weight=users.relation.Parent)
-   admin.accept_relation(p24.get_id(),p28.get_id())
-   
-
-
-admin.add_relation(sender_id=p25.get_id(), receiver_id=p29.get_id(), weight=users.relation.Friends)
-   admin.accept_relation(p25.get_id(),p29.get_id())
-   
-
-admin.add_relation(sender_id=p21.get_id(), receiver_id=p30.get_id(), weight=users.relation.Relative)
-   admin.accept_relation(p21.get_id(),p30.get_id())
-   
-
-admin.add_relation(sender_id=p36.get_id(), receiver_id=p26.get_id(), weight=users.relation.Child)
-   admin.accept_relation(p36.get_id(),p26.get_id())
-   
-
-admin.add_relation(sender_id=p37.get_id(), receiver_id=p27.get_id(), weight=users.relation.Parent)
-   admin.accept_relation(p37.get_id(),p27.get_id())
+admin.add_relation(sender_id=24, receiver_id=28, weight=users.relation.Parent)
+   admin.accept_relation(24,28)
    
 
 
-admin.add_relation(sender_id=p38.get_id(), receiver_id=p28.get_id(), weight=users.relation.Friends)
-   admin.accept_relation(p38.get_id(),p28.get_id())
+admin.add_relation(sender_id=25, receiver_id=29, weight=users.relation.Friends)
+   admin.accept_relation(25,29)
+   
+
+admin.add_relation(sender_id=21, receiver_id=30, weight=users.relation.Relative)
+   admin.accept_relation(21,30)
+   
+
+admin.add_relation(sender_id=36, receiver_id=26, weight=users.relation.Child)
+   admin.accept_relation(36,26)
+   
+
+admin.add_relation(sender_id=37, receiver_id=27, weight=users.relation.Parent)
+   admin.accept_relation(37,27)
    
 
 
-admin.add_relation(sender_id=p39.get_id(), receiver_id=p29.get_id(), weight=users.relation.Friends)
-   admin.accept_relation(p39.get_id(),p29.get_id())
+admin.add_relation(sender_id=38, receiver_id=28, weight=users.relation.Friends)
+   admin.accept_relation(38,28)
    
 
 
-admin.add_relation(sender_id=p31.get_id(), receiver_id=p37.get_id(), weight=users.relation.Parent)
-   admin.accept_relation(p31.get_id(),p37.get_id())
+admin.add_relation(sender_id=39, receiver_id=29, weight=users.relation.Friends)
+   admin.accept_relation(39,29)
    
 
 
-admin.add_relation(sender_id=p38.get_id(), receiver_id=p32.get_id(), weight=users.relation.Friend)
-   admin.accept_relation(p38.get_id(),p32.get_id())
-   
-
-admin.add_relation(sender_id=p33.get_id(), receiver_id=p39.get_id(), weight=users.relation.Parent)
-   admin.accept_relation(p33.get_id(),p39.get_id())
+admin.add_relation(sender_id=31, receiver_id=37, weight=users.relation.Parent)
+   admin.accept_relation(31,37)
    
 
 
-admin.add_relation(sender_id=p34.get_id(), receiver_id=p35.get_id(), weight=users.relation.Friends)
-   admin.accept_relation(p34.get_id(),p35.get_id())
+admin.add_relation(sender_id=38, receiver_id=32, weight=users.relation.Friend)
+   admin.accept_relation(38,32)
+   
+
+admin.add_relation(sender_id=33, receiver_id=39, weight=users.relation.Parent)
+   admin.accept_relation(33,39)
+   
+
+
+admin.add_relation(sender_id=34, receiver_id=35, weight=users.relation.Friends)
+   admin.accept_relation(p34,p35)
    
