@@ -1,4 +1,5 @@
 import Code.hashing as hashing
+
 class Person:
     # ** Data ** ##
     """
@@ -62,30 +63,12 @@ class Person:
 
     def get_admin_groups (self):
         return self.admin
-    # ** getters and setters for whole information **##
+    # ** getters and setters for person's whole information **##
 
     def get_info(self):
         return self.__dict__
 
-    def set_info(self, id=None, name=None, email=None, password=None):
-        if id is None:
-            pass
-        else:
-            self.set_id(id)
-        if name is None:
-            pass
-        else:
-            self.set_name(name)
-        if email is None:
-            pass
-        else:
-            self.set_email(email)
-        if password is None:
-            pass
-        else:
-            self.set_password(password)
-
-    # ** setters **#
+    # ** setters for persons information **#
     def set_id(self, ID):
         self.ID = ID
 
@@ -119,7 +102,25 @@ class Person:
     def set_gender(self, gender):
         self.gender = gender
 
-    # ** adding **##
+    def set_info(self, id=None, name=None, email=None, password=None):
+        if id is None:
+            pass
+        else:
+            self.set_id(id)
+        if name is None:
+            pass
+        else:
+            self.set_name(name)
+        if email is None:
+            pass
+        else:
+            self.set_email(email)
+        if password is None:
+            pass
+        else:
+            self.set_password(password)
+
+    # ** adding posts or groups **##
     def add_post_id(self, post_id):
         self.posts.append(post_id)
 
@@ -134,8 +135,7 @@ class Person:
 
     # when a user is declared Admin, he will be declared here and in groups class or its equivilant  
 
-    # ** removing **##
-    ''' TBD: search for try and catch in the index method '''
+    # ** removing posts or groups **##
     def remove_post(self, post_id):
         self.posts.remove(post_id)
 
