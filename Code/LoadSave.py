@@ -10,7 +10,7 @@ import Person as person
 import Post as post
 
                         
-            
+    #takes the whole graph represnting the system and save it in a json file
 def save(graph) :
     data = {}
     data["numUsers"]= graph.numUsers 
@@ -20,7 +20,21 @@ def save(graph) :
     for person in graph.Users:
         data["Users"].append({"name":person.name, "email":person.email, "password":person.password,
             "age":person.age, "location":person.location, "gender":person.gender,
-            "groups":person.groups, "posts":person.posts, "admin": person.admin})
+            "groups":person.groups, "posts":person.posts, "admin": person.admin,
+            "requests_sent":{}, "requests_received": {}})
+        for x in person.requests_sent:
+            if type (person.requests_sent[x]) == int:
+                data["Users"][-1]["requests_sent"][x]= person.requests_sent[x]
+            else:
+                data["Users"][-1]["requests_sent"][x]= person.requests_sent[x].value
+                
+        for x in person.requests_received:
+            if type (person.requests_received[x]) == int:
+                data["Users"][-1]["requests_received"][x]= person.requests_received[x]
+            else:
+                data["Users"][-1]["requests_received"][x]= person.requests_received[x].value
+            
+            
     data["edges"]= []
     
     for row in graph.edges:
@@ -42,7 +56,8 @@ def save(graph) :
     with open('users_data.json', 'w') as f:
         json.dump(data, f)
     
-    
+    #load func. to extract the data from a json file containing it,
+    #and put it back into a given 'Users' object representing a graph
 def load(graph):
     with open('users_data.json') as f:
         data = json.load(f)
@@ -51,11 +66,41 @@ def load(graph):
     graph.maxUsers = int(data["maxUsers"]) 
     graph.num_posts = int(data["num_posts"])
     for one in data["Users"]:
-        graph.Users.append(person.Person(one["name"], one["email"], one["password"], one["age"], 
+        graph.AddUser(person.Person(one["name"], one["email"], one["password"], one["age"], 
                                          one["location"], one["gender"]))
         graph.Users[-1].groups = [int(i) for i in one["groups"]]
         graph.Users[-1].posts = [int(i) for i in one["posts"]]
         graph.Users[-1].admin = [int(i) for i in one["admin"]]
+        for x in one["requests_sent"]:
+            if int(one["requests_sent"][x]) == -1 :
+                graph.Users[-1].requests_sent[int(x)] = -1
+            elif int(one["requests_sent"][x]) == 0 :
+                graph.Users[-1].requests_sent[int(x)] = users.relation.Friend
+            elif int(one["requests_sent"][x]) == 1 :
+                graph.Users[-1].requests_sent[int(x)] = users.relation.Sibling
+            elif int(one["requests_sent"][x]) == 2 :
+                graph.Users[-1].requests_sent[int(x)] = users.relation.Parent
+            elif int(one["requests_sent"][x]) == 3 :
+                graph.Users[-1].requests_sent[int(x)] = users.relation.Child
+            elif int(one["requests_sent"][x]) == 4 :
+                graph.Users[-1].requests_sent[int(x)] = users.relation.Relative
+            else: graph.Users[-1].requests_sent[int(x)] = int(one["requests_sent"][x])
+            
+        for x in one["requests_received"]:
+            if int(one["requests_received"][x]) == -1 :
+                graph.Users[-1].requests_received[int(x)] = -1
+            elif int(one["requests_received"][x]) == 0 :
+                graph.Users[-1].requests_received[int(x)] = users.relation.Friend
+            elif int(one["requests_received"][x]) == 1 :
+                graph.Users[-1].requests_received[int(x)] = users.relation.Sibling
+            elif int(one["requests_received"][x]) == 2 :
+                graph.Users[-1].requests_received[int(x)] = users.relation.Parent
+            elif int(one["requests_received"][x]) == 3 :
+                graph.Users[-1].requests_received[int(x)] = users.relation.Child
+            elif int(one["requests_received"][x]) == 4 :
+                graph.Users[-1].requests_received[int(x)] = users.relation.Relative
+            else: graph.Users[-1].requests_received[int(x)] = int(one["requests_sent"][x])
+        
         
     graph.edges=[]
     for row in range(0, len(data["edges"])):
