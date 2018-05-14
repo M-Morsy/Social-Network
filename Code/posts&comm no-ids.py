@@ -112,18 +112,9 @@ admin.Posts[19].add_comment("If you want to know what a man's like, take a good 
 
 admin.add_post(post.Post("Do one thing every day that scares you", 33), 33 )
 admin.Posts[20].add_comment("Tough times never last, but tough people do", 32)
-admin.Posts[20].add_comment("Don’t walk in front of me… I may not follow
-Don’t walk behind me… I may not lead
-Walk beside me… just be my friend", 30)
+admin.Posts[20].add_comment("Don’t walk in front of me… I may not follow Don’t walk behind me… I may not lead Walk beside me… just be my friend", 30)
 
 
 admin.add_post(post.Post("Live each day as if your life had just begun", 29), 29 )
 admin.Posts[21].add_comment("Education costs money. But then so does ignorance", 27)
-admin.Posts[21].add_comment("If you tell the truth, you don't have to remember anything
-. But then so does ignorance", 26)
-
-
-
-
-
-
+admin.Posts[21].add_comment("If you tell the truth, you don't have to remember anything. But then so does ignorance", 26)

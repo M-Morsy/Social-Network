@@ -56,13 +56,13 @@ def save(graph) :
     with open('users_data.json', 'w') as f:
         json.dump(data, f)
     
-    #load func. to extract the data from a json file containing it,
-    #and put it back into a given 'Users' object representing a graph
+#load func. to extract the data from a json file containing it,
+#and put it back into a given 'Users' object representing a graph
 def load(graph):
     with open('users_data.json') as f:
         data = json.load(f)
         
-    graph.numUsers = int(data["numUsers"])
+    graph.numUsers = 0
     graph.maxUsers = int(data["maxUsers"]) 
     graph.num_posts = int(data["num_posts"])
     for one in data["Users"]:

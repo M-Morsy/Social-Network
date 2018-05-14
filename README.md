@@ -107,6 +107,6 @@ it takes back the saved data from the json file. like all the users and their co
 
 ## Future work
 1. Groups class
-2. registration and authorization system
+2. Registration and authorization system
 3. Advanced operations on the graph
-
+4. User interface (maybe OS - or web)

@@ -106,7 +106,7 @@ class Post(Comment, person.Person):
             post_contents += "     {}- {}: {} \n \n".format(i, x.user_id, x.text)
             i += 1
 
-        return post_contents
+        print(post_contents)
 
 
 

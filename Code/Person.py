@@ -1,4 +1,4 @@
-import Code.hashing as hashing
+import hashing as hashing
 
 class Person:
     # ** Data ** ##

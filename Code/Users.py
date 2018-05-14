@@ -9,7 +9,7 @@ import Code.Post as post
 from enum import Enum
 import matplotlib.pyplot as plt
 import networkx as nx
-import Code.hashing as hashing
+import hashing as hashing
 
 
 class relation(Enum):
@@ -86,6 +86,7 @@ class Users(person.Person):
         row = self.IndexIs(fromPesron)
         col = self.IndexIs(toPerson)
         self.edges[col][row]= weight
+
         if weight is 3 or weight is relation.Parent:
             self.edges[row][col] = relation.Child
 
@@ -140,8 +141,8 @@ class Users(person.Person):
     # **post** #
     def add_post(self, post, user_id):
         self.Users[user_id].add_post_id(self.num_posts)
-        self.num_posts += 1
         self.Posts.append(post)
+        self.num_posts += 1
 
     # post getters
     def get_text(self, post_id):
@@ -159,13 +160,22 @@ class Users(person.Person):
 
     # post view for all the posts of that user >> timeline !
     def get_posts(self, user_id):
+        print(user_id)
         posts_ids = self.Users[user_id].get_posts_ids()
         posts_num = posts_ids.__len__()
+
+
         if posts_num > 0:
             for i in posts_ids:
-                return self.Posts[posts_ids[i]].post_view()
+                print("post id[", i, "] for user:", user_id)
+                self.Posts[i].post_view()
         else:
             return "NO posts from user", user_id
+
+    def show_all_posts(self):
+        print("numUsers", self.numUsers)
+        for i in range(self.numUsers):
+            self.get_posts(i)
 
     # post setters
     def set_post_id(self, post_id):
@@ -341,6 +351,7 @@ class Users(person.Person):
         g = nx.Graph()
         names = {}
         for i in range(self.edges.__len__()):
+
             g.add_node(i)
             for j in range(self.edges.__len__()):
                 g.nodes[i]['name'] = self.Users[i].name

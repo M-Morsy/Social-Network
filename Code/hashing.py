@@ -30,7 +30,7 @@ class Node:
             self.data = data
             self.id = id
 
-# Print the tree from largest element to lowest one
+    # Print the tree from largest element to lowest one
     def PrintTree(self):
         if self.right:
             self.right.PrintTree()
@@ -89,16 +89,16 @@ class Node:
     def SearchBT(self, data):
         found= []
         self.SearchBTin(data, found)
-        return found 
-         #inner func. just to travers tree recursevly 
+        return found
+    #inner func. just to travers tree recursevly
     def SearchBTin (self, data, found):
         if self.right:
            self.right.SearchBTin(data, found)
-        if self.data== data:
+        if self.data == data:
             found.append(self.id)
         if self.left:
             self.left.SearchBTin(data, found)
-            
+
             
 # ** Hash Tables For Fast Searching ** #
 
@@ -217,94 +217,118 @@ ageTable = {9: ageRoot9, 19: ageRoot19, 29: ageRoot29, 39: ageRoot39,
 #search func. can search for 3 attributes at max: age, name, country.
 #takes that 3 attributes in any order, but the attribute name must be written before the attibute itself
 #returns a list of users IDs, those users share the same searched attributes
-def search (arg1, arg1Data, arg2=None, arg2Data=None, arg3=None, arg3Data= None):
+def search(arg1, arg1Data, arg2=None, arg2Data=None, arg3=None, arg3Data=None):
     found = []
     if arg1 == "age":
-        key= ageHashFunc(arg1Data)
+
+        key = ageHashFunc(arg1Data)
         ID = ageTable[key].SearchBT(arg1Data)
-        found = ID 
+
+        found = ID
+
     elif arg1 == "name":
-        key= nameHashFunc(arg1Data)
+
+        key = nameHashFunc(arg1Data)
         ID = nameTable[key].SearchBT(arg1Data)
-        found = ID 
+        found = ID
+
+
     elif arg1 == "country":
-        key= nameHashFunc(arg1Data)
+
+        key = nameHashFunc(arg1Data)
         ID = countryTable[key].SearchBT(arg1Data)
-        found = ID 
-        
+        found = ID
+
+
     if arg2 == "age":
         yes = False
-        key= ageHashFunc(arg2Data)
+        key = ageHashFunc(arg2Data)
         ID = ageTable[key].SearchBT(arg2Data)
-        for i in found:
-            yes = False
+        if ID == []:
+            found = []
+        found2 = []
+        for i in (found):
             for j in ID:
-                if i==j :
-                    yes = True
-            if yes == False :
-                found.remove(i)
-        
+
+                if i == j:
+                    found2.append(i)
+
+        found = found2
+
     elif arg2 == "name":
         yes = False
-        key= nameHashFunc(arg2Data)
+        key = nameHashFunc(arg2Data)
         ID = nameTable[key].SearchBT(arg2Data)
-        for i in found:
-            yes = False
+        if ID == []:
+            found = []
+        found2 = []
+        for i in (found):
             for j in ID:
-                if i==j :
-                    yes = True
-            if yes == False :
-                found.remove(i)
+
+                if i == j:
+
+                    found2.append(i)
+
+        found = found2
     elif arg2 == "country":
         yes = False
-        key= nameHashFunc(arg2Data)
-        ID = countryTable[key].SearchBT(arg2Data) 
-        for i in found:
-            yes = False
+        key = nameHashFunc(arg2Data)
+        ID = countryTable[key].SearchBT(arg2Data)
+        if ID == []:
+            found = []
+        found2 = []
+        for i in (found):
             for j in ID:
-                if i==j :
-                    yes = True
-            if yes == False :
-                found.remove(i)
-                
+
+                if i == j:
+                    found2.append(i)
+
+        found = found2
+
     if arg3 == "age":
-        yes = False
-        key= ageHashFunc(arg3Data)
+        key = ageHashFunc(arg3Data)
         ID = ageTable[key].SearchBT(arg3Data)
-        for i in found:
-            yes = False
+        if ID == []:
+            found = []
+        found2 = []
+        for i in (found):
             for j in ID:
-                if i==j :
-                    yes = True
-            if yes == False :
-                found.remove(i)
-        
+
+                if i == j:
+                    found2.append(i)
+
+        found = found2
+
     elif arg3 == "name":
         yes = False
-        key= nameHashFunc(arg3Data)
+        key = nameHashFunc(arg3Data)
         ID = nameTable[key].SearchBT(arg3Data)
-        for i in found:
-            yes = False
+        if ID == []:
+            found = []
+        found2 = []
+        for i in (found):
             for j in ID:
-                if i==j :
-                    yes = True
-            if yes == False :
-                found.remove(i)
+
+                if i == j:
+                    found2.append(i)
+        found = found2
     elif arg3 == "country":
         yes = False
-        key= nameHashFunc(arg3Data)
+        key = nameHashFunc(arg3Data)
         ID = countryTable[key].SearchBT(arg3Data)
-        for i in found:
-            yes = False
+        if ID == []:
+            found = []
+        found2 = []
+        for i in (found):
             for j in ID:
-                if i==j :
-                    yes = True
-            if yes == False :
-                found.remove(i)
-                
+                if i == j:
+                    found2.append(i)
+        found = found2
+
     return found
 
-"""
+
+'''
 root = Node(10,-1)
 root.insert(5,1)
 root.insert(15,2)
@@ -316,4 +340,4 @@ ageRoot9.PrintTree()
 # 0,1,2
 a = nameHashFunc("waleed")
 print(a)
-"""
+'''
