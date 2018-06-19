@@ -131,3 +131,8 @@ def load(graph):
             graph.Posts[-1].Comments[-1].time = j["time"]
             graph.Posts[-1].Comments[-1].comment_id = int(j["comment_id"])
         
+def getUsersNum():
+    with open('users_data.json') as f:
+        data = json.load(f)
+        
+    return data["numUsers"]
