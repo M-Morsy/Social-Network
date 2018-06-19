@@ -350,10 +350,10 @@ class Users(person.Person):
     def show_graph(self, with_edges=False):
         g = nx.Graph()
         names = {}
-        for i in range(self.edges.__len__()):
+        for i in range(self.numUsers):
 
             g.add_node(i)
-            for j in range(self.edges.__len__()):
+            for j in range(self.edges[i].__len__()):
                 g.nodes[i]['name'] = self.Users[i].name
                 names[i] = self.Users[i].name
                 if self.edges[i][j] != -1:
