@@ -26,7 +26,7 @@ class Users(person.Person):
     maxUsers = 0  # Max number of users in the site we can deal with
     num_posts = 0  # Actual number of posts in the graph
     Users = [0 for x in range(maxUsers)]  # all users
-    edges = [[0 for x in range(maxUsers)] for y in range(maxUsers)] # all connection between users
+    edges = [[] for y in range(maxUsers)] # all connection between users
     marks = [0 for x in range(maxUsers)]  # mark user when search about special one
     Posts = []  # array of post
     Groups = []  # array of groups
@@ -36,8 +36,6 @@ class Users(person.Person):
         self.maxUsers = maxUsers
         for row in range(self.maxUsers):
             self.edges.append([])
-            for col in range(self.maxUsers):
-                self.edges[row].append(-1)
 
     def __del__(self):  # nothing to do
         print("users: ", self.Users)
@@ -83,29 +81,36 @@ class Users(person.Person):
         self.numUsers += 1
 
     def AddEdge(self, fromPesron, toPerson, weight):  # add new connection
-        row = self.IndexIs(fromPesron)
-        col = self.IndexIs(toPerson)
-        self.edges[col][row]= weight
+        fromUser = self.IndexIs(fromPesron)
+        toUser = self.IndexIs(toPerson)
+        self.edges[fromUser].append([toUser, weight])
 
-        if weight is 3 or weight is relation.Parent:
-            self.edges[row][col] = relation.Child
+        if weight is 3 :  #if from parent to child
+            self.edges[toUser].append([fromUser, 2])
 
-        elif weight is 2 or weight is relation.Child:
-            self.edges[row][col] = relation.Parent
-
-        else:
-           self.edges[col][row] = weight #for other relations
+        elif weight is 2 : #if from child to parent
+            self.edges[toUser].append([fromUser, 3])
+            
+        else:           
+            self.edges[toUser].append([fromUser, weight]) #for other relations
 
     def remove_edge(self, from_person, to_person): # remove connection between two users
-        row = self.IndexIs(from_person)
-        col = self.IndexIs(to_person)
-        self.edges[row][col] = 0
-        self.edges[col][row] = 0
+        fromUser = self.IndexIs(from_person)
+        toUser = self.IndexIs(to_person)
+        for i in self.edges[fromUser]:
+            if i[0] == toUser:
+                self.edges[fromUser].remove(i)
+        for i in self.edges[toUser]:
+            if i[0] == fromUser:
+                self.edges[toUser].remove(i)
 
     def WeightIs(self, fromPesron, toPerson):  # add weight between two users
-        row = self.IndexIs(fromPesron)
-        col = self.IndexIs(toPerson)
-        return self.edges[row][col]
+        fromUser = self.IndexIs(fromPesron)
+        toUser = self.IndexIs(toPerson)
+        for i in self.edges[fromUser]:
+            if i[0] == toUser:
+                return i[1]
+        return -1
 
     def GetToUsers(self, pesron):  # for searching algorithm
         print("nothing")
@@ -201,13 +206,13 @@ class Users(person.Person):
         self.Posts[post_id].get_comments_num()
 
     # ** Operation on a group ** #
-    def add_relation(self, sender_id, receiver_id, weight=relation.Friend):
+    def add_relation(self, sender_id, receiver_id, weight=0):
         self.Users[sender_id].requests_sent[receiver_id] = weight   # save in sender that he/she sent
-        if weight == relation.Parent or weight == 2:
-            self.Users[receiver_id].requests_received[sender_id] = relation.Child
+        if weight == 2: #from parent to child
+            self.Users[receiver_id].requests_received[sender_id] = 3
 
-        elif weight == relation.Child or weight == 3:
-            self.Users[receiver_id].requests_received[sender_id] = relation.Parent
+        elif weight == 3: #from child to parent
+            self.Users[receiver_id].requests_received[sender_id] = 2
 
         else:
 
@@ -243,14 +248,11 @@ class Users(person.Person):
     def show_friends(self, user_id):
         # to be changed later >> when id is more complex function: id_to_index(id = user_id) & vice versa
         id_list = self.edges[user_id]
-        count = 0
         friends_list =[]
         # search in adj matrix row for that user_id
         for i in id_list:
-            if type(i) == relation or (type(i) == int and i >= 0):
-                j = count
-                friends_list.append(self.Users[j].get_info())
-            count += 1
+            j = i[0]
+            friends_list.append(self.Users[j].get_info())
         friends_number = friends_list.__len__()
         if friends_number > 0:
             if friends_number == 1:
@@ -266,18 +268,14 @@ class Users(person.Person):
 
     def show_friends_posts (self, user_id):
         id_list = self.edges[user_id]
-        count = 0
         friends_list = []
         print("Posts from user", user_id, "friends are:")
         # search in adj matrix row for that user_id
         for i in id_list:
-            if type(i) == relation or (type(i) == int and i >= 0):
-                j = count
-                friends_list.append(self.Users[j].get_id())
-            count += 1
+            j = i[0]
+            friends_list.append(self.Users[j].get_id())
         friends_number = friends_list.__len__()
         print("friends list:", friends_list)
-        printed_posts=[]
         if friends_number > 0:
             for i in friends_list:
                 print("from user: ", i)
@@ -288,7 +286,10 @@ class Users(person.Person):
 
     def show_relation_string(self, id1, id2):
 
-        weight = self.edges[id1][id2]
+        weight = -1 
+        for i in self.edges[id1]:
+            if i[0] == id2:
+                weight = i[1]
         if weight is 0:
             return "Friends"
         elif weight is 3:
@@ -300,22 +301,13 @@ class Users(person.Person):
         elif weight is 1:
             return "Siblings"
         else:
-            return weight
+            return "No relation"
 
     def show_relation_number(self, id1, id2):
-        weight = self.edges[id1][id2]
-        if weight is 0 or weight is relation.Friend:
-            return 0
-        elif weight is 3 or weight is relation.Child:
-            return 3
-        elif weight is 2 or weight is relation.Parent:
-            return 2
-        elif weight is 4 or weight is relation.Relative:
-            return 4
-        elif weight is 1 or weight is relation.Sibling:
-            return 1
-        else:
-            return weight
+        for i in self.edges[id1]:
+            if i[0] == id2:
+                return i[1]
+        return -1
 
     # ** Extract trees and graphs ** #
     '''
@@ -353,14 +345,14 @@ class Users(person.Person):
         for i in range(self.numUsers):
 
             g.add_node(i)
-            for j in range(self.edges[i].__len__()):
+            for k in self.edges[i]:
+                j= k[0]
                 g.nodes[i]['name'] = self.Users[i].name
                 names[i] = self.Users[i].name
-                if self.edges[i][j] != -1:
-                    g.add_edge(i, j)
-                    g.nodes[j]['name'] = self.Users[j].name
-                    g[i][j]['w'] = self.show_relation_number(i,j)
-                    '''parent and child returns 2 & 3 but graph is not directed'''
+                g.add_edge(i, j)
+                g.nodes[j]['name'] = self.Users[j].name
+                g[i][j]['w'] = self.show_relation_number(i,j)
+                '''parent and child returns 2 & 3 but graph is not directed'''
 
         pos = nx.spring_layout(g)
         nx.draw_networkx_nodes(g, pos)
