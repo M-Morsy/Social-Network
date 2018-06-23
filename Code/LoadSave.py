@@ -35,15 +35,7 @@ def save(graph) :
                 data["Users"][-1]["requests_received"][x]= person.requests_received[x].value
             
             
-    data["edges"]= []
-    
-    for row in graph.edges:
-        data["edges"].append([])
-        for col in row:
-            if type(col)== int:
-                data["edges"][-1].append(col)
-            else:
-                data["edges"][-1].append(col.value)
+    data["edges"]= graph.edges
     
     data["Posts"]= []
     for post in graph.Posts:
@@ -72,55 +64,17 @@ def load(graph):
         graph.Users[-1].posts = [int(i) for i in one["posts"]]
         graph.Users[-1].admin = [int(i) for i in one["admin"]]
         for x in one["requests_sent"]:
-            if int(one["requests_sent"][x]) == -1 :
-                graph.Users[-1].requests_sent[int(x)] = -1
-            elif int(one["requests_sent"][x]) == 0 :
-                graph.Users[-1].requests_sent[int(x)] = users.relation.Friend
-            elif int(one["requests_sent"][x]) == 1 :
-                graph.Users[-1].requests_sent[int(x)] = users.relation.Sibling
-            elif int(one["requests_sent"][x]) == 2 :
-                graph.Users[-1].requests_sent[int(x)] = users.relation.Parent
-            elif int(one["requests_sent"][x]) == 3 :
-                graph.Users[-1].requests_sent[int(x)] = users.relation.Child
-            elif int(one["requests_sent"][x]) == 4 :
-                graph.Users[-1].requests_sent[int(x)] = users.relation.Relative
-            else: graph.Users[-1].requests_sent[int(x)] = int(one["requests_sent"][x])
+            graph.Users[-1].requests_sent[int(x)] = int(one["requests_sent"][x])
             
         for x in one["requests_received"]:
-            if int(one["requests_received"][x]) == -1 :
-                graph.Users[-1].requests_received[int(x)] = -1
-            elif int(one["requests_received"][x]) == 0 :
-                graph.Users[-1].requests_received[int(x)] = users.relation.Friend
-            elif int(one["requests_received"][x]) == 1 :
-                graph.Users[-1].requests_received[int(x)] = users.relation.Sibling
-            elif int(one["requests_received"][x]) == 2 :
-                graph.Users[-1].requests_received[int(x)] = users.relation.Parent
-            elif int(one["requests_received"][x]) == 3 :
-                graph.Users[-1].requests_received[int(x)] = users.relation.Child
-            elif int(one["requests_received"][x]) == 4 :
-                graph.Users[-1].requests_received[int(x)] = users.relation.Relative
-            else: graph.Users[-1].requests_received[int(x)] = int(one["requests_sent"][x])
+            graph.Users[-1].requests_received[int(x)] = int(one["requests_sent"][x])
         
         
     graph.edges=[]
     for row in range(0, len(data["edges"])):
         graph.edges.append([])
         for col in range(0, len(data["edges"][row])):
-            if int(data["edges"][row][col]) == -1 :
-                graph.edges[row].append(-1)
-            elif int(data["edges"][row][col]) == 0 :
-                graph.edges[row].append(users.relation.Friend)
-            elif int(data["edges"][row][col]) == 1 :
-                graph.edges[row].append(users.relation.Sibling)
-            elif int(data["edges"][row][col]) == 2 :
-                graph.edges[row].append(users.relation.Parent)
-            elif int(data["edges"][row][col]) == 3 :
-                graph.edges[row].append(users.relation.Child)
-            elif int(data["edges"][row][col]) == 4 :
-                graph.edges[row].append(users.relation.Relative)
-            elif int(data["edges"][row][col]) == 5 :
-                graph.edges[row].append(5)
-            else : graph.edges[row].append(int(data["edges"][row][col]))         
+            graph.edges[row].append([int(data["edges"][row][col][0]), int(data["edges"][row][col][1])])         
             
     for i in data["Posts"]:
         graph.Posts.append(post.Post(i["text"], int(i["user_id"])))
@@ -134,5 +88,5 @@ def load(graph):
 
 def getUsersNum():
     with open('users_data.json') as f:
-        data = json.load(f)
+        data = json.load(f)   
     return data["numUsers"]
