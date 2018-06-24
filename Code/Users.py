@@ -79,6 +79,9 @@ class Users(person.Person):
              countryRange = hashing.nameHashFunc(person.location)
              hashing.countryTable[countryRange].insert(person.get_location(), person.get_id())
         self.numUsers += 1
+        if self.numUsers > self.maxUsers:
+            self.edges.append([])
+            self.maxUsers += 1
 
     def AddEdge(self, fromPesron, toPerson, weight):  # add new connection
         fromUser = self.IndexIs(fromPesron)
@@ -343,10 +346,9 @@ class Users(person.Person):
         g = nx.Graph()
         names = {}
         for i in range(self.numUsers):
-
             g.add_node(i)
             for k in self.edges[i]:
-                j= k[0]
+                j = k[0]
                 g.nodes[i]['name'] = self.Users[i].name
                 names[i] = self.Users[i].name
                 g.add_edge(i, j)
