@@ -166,13 +166,10 @@ class Users(person.Person):
     def get_posts_ids(self, user_id):
         return self.Users[user_id].get_posts_ids()
 
-    # post view for all the posts of that user >> timeline !
     def get_posts(self, user_id):
         print(user_id)
         posts_ids = self.Users[user_id].get_posts_ids()
         posts_num = posts_ids.__len__()
-
-
         if posts_num > 0:
             for i in posts_ids:
                 print("post id[", i, "] for user:", user_id)
@@ -180,6 +177,13 @@ class Users(person.Person):
         else:
             return "NO posts from user", user_id
 
+    def get_friends_posts (self, user_id):
+        friends_ids = {}
+        for i in self.edges[user_id]:
+            self.get_posts(i[0])
+        pass
+
+    # post view for all the posts of that user >> timeline !
     def show_all_posts(self):
         print("numUsers", self.numUsers)
         for i in range(self.numUsers):
@@ -347,10 +351,11 @@ class Users(person.Person):
         names = {}
         for i in range(self.numUsers):
             g.add_node(i)
+            names[i] = self.Users[i].name
             for k in self.edges[i]:
                 j = k[0]
                 g.nodes[i]['name'] = self.Users[i].name
-                names[i] = self.Users[i].name
+
                 g.add_edge(i, j)
                 g.nodes[j]['name'] = self.Users[j].name
                 g[i][j]['w'] = self.show_relation_number(i,j)
@@ -363,6 +368,7 @@ class Users(person.Person):
         if with_edges:
             nx.draw_networkx_edge_labels(g, pos)
         plt.show()
+        print(names)
         pass
 
     '''

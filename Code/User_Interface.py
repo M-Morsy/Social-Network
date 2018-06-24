@@ -30,32 +30,10 @@ print(admin.maxUsers)
 
 # login
 print("Welcome to TR")
-print("do you need to login or register ?")
-print("login : 1    register : 2")
+print("do you need to register ?")
+print("yes : 1    no : 2")
 option = input()
 if option == '1':
-    print("Please enter your email and password")
-    flag = False
-    while flag is not True:
-        email = input("email: ")
-        email = email.strip()
-        if re.match("\A(?P<name>[\w\-_.]+)@(?P<domain>[\w\-_]+).(?P<toplevel>[\w]+)\Z",email,re.IGNORECASE):
-            flag = True
-        else:
-            print("Email is invalid")
-    password = input("password: ")
-
-    # check if user exists : binary search
-    flag = False
-    user_num = -1
-    for i in range(num):
-        if (admin.Users[i].get_email() == email) and (admin.Users[i].get_password() == password):
-            flag == True
-            user_num = i
-            break
-    print(user_num)
-
-elif option == '2':
     flag = False
     print("please enter the following data: ")
     name = input("name:")
@@ -83,11 +61,30 @@ elif option == '2':
 
     admin.show_graph()
     SL.save(admin)
+    # code to login
 
 
+print("Please enter your email and password")
+flag = False
+while flag is not True:
+    email = input("email: ")
+    email = email.strip()
+    if re.match("\A(?P<name>[\w\-_.]+)@(?P<domain>[\w\-_]+).(?P<toplevel>[\w]+)\Z",email,re.IGNORECASE):
+        flag = True
+    else:
+        print("Email is invalid")
+password = input("password: ")
 
+# check if user exists : binary search
+flag = False
+user_num = -1
+for i in range(num):
+    if (admin.Users[i].get_email() == email) and (admin.Users[i].get_password() == password):
+        flag == True
+        user_num = i
+        break
+# print(user_num) # aurora@gmail.com  aurora;ol7  # 16
 
-# aurora@gmail.com  hamada@gmail.com
-# aurora;ol7        ahm;ol
-
-# options
+print("YOUR TIMELINE: ")
+print("---------------")
+admin.get_friends_posts(user_num)

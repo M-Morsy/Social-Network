@@ -351,6 +351,7 @@ admin.Posts[22].add_comment("Education costs money. But then so does ignorance",
 admin.Posts[22].add_comment("If you tell the truth, you don't have to remember anything. But then so does ignorance", 26)
 print(admin.num_posts)
 
+admin.add_post(post.Post("Live each day as if your life had just begun", 38), 38)
 admin.show_all_posts()
 # ** hashing test ** #
 '''
