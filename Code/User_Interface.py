@@ -129,4 +129,4 @@ if option == '1':
 elif option == '2' :
     navigate(2, user_num)
 
-
+print("Thanks !")
