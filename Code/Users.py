@@ -4,8 +4,8 @@ Created on Fri Apr 20 15:05:17 2018
 
 @author: shimaa
 """
-import Code.Person as person
-import Code.Post as post
+import Person as person
+import Post as post
 from enum import Enum
 import matplotlib.pyplot as plt
 import networkx as nx
@@ -362,7 +362,15 @@ class Users(person.Person):
                 '''parent and child returns 2 & 3 but graph is not directed'''
 
         pos = nx.spring_layout(g)
-        nx.draw_networkx_nodes(g, pos)
+        #nx.draw_networkx_nodes(g, pos)
+        Max = list(g.degree)[0]
+        for i in g.degree:
+            if i[1] > Max[1] :
+                Max= i
+        for i in g.degree:
+            if i == Max:
+                nx.draw_networkx_nodes(g, pos, nodelist= [i[0]], node_size=i[1]*100, node_color= 'b')
+            else: nx.draw_networkx_nodes(g, pos, nodelist= [i[0]], node_size=50+i[1]*50)
         nx.draw_networkx_edges(g, pos)
         nx.draw_networkx_labels(g, pos, names)
         if with_edges:
