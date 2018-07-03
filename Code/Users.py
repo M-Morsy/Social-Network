@@ -10,6 +10,7 @@ from enum import Enum
 import matplotlib.pyplot as plt
 import networkx as nx
 import hashing as hashing
+import numpy as np
 
 
 class relation(Enum):
@@ -345,6 +346,43 @@ class Users(person.Person):
         '''
 
     # ** Visualization ** #
+    
+    def post_chart(self):
+        fig, ax = plt.subplots()
+        users = []
+        posts_num = []
+        for i in self.Users:
+            if len(i.posts) > 0:
+                users.append(i.ID)
+                posts_num.append(len(i.posts))
+        y_pos = np.arange(len(users))
+        plt.bar(y_pos, posts_num, align='center', alpha=0.5)
+        plt.xticks(y_pos, users)
+        plt.ylabel('Number of posts')
+        plt.title('Users activity')
+        plt.show()
+        
+    def comment_chart(self):
+        fig, ax = plt.subplots()
+        users = []
+        comments_num = []
+        for i in self.Users:
+            users.append(i.ID)
+            comments_num.append(0)
+            for p in self.Posts:
+                for c in p.Comments:
+                    if c.user_id == i.ID:
+                        comments_num[-1] += 1
+            if comments_num[-1] == 0:
+                users.pop()
+                comments_num.pop()
+                
+        y_pos = np.arange(len(users))
+        plt.bar(y_pos, comments_num, align='center', alpha=0.5)
+        plt.xticks(y_pos, users)
+        plt.ylabel('Number of comments')
+        plt.title('Users activity')
+        plt.show()
 
     def show_graph(self, with_edges=False):
         g = nx.Graph()
@@ -369,8 +407,8 @@ class Users(person.Person):
                 Max= i
         for i in g.degree:
             if i == Max:
-                nx.draw_networkx_nodes(g, pos, nodelist= [i[0]], node_size=i[1]*100, node_color= 'b')
-            else: nx.draw_networkx_nodes(g, pos, nodelist= [i[0]], node_size=50+i[1]*50)
+                nx.draw_networkx_nodes(g, pos, nodelist= [i[0]], node_size=i[1]*200, node_color= 'b')
+            else: nx.draw_networkx_nodes(g, pos, nodelist= [i[0]], node_size=50+i[1]*100)
         nx.draw_networkx_edges(g, pos)
         nx.draw_networkx_labels(g, pos, names)
         if with_edges:
