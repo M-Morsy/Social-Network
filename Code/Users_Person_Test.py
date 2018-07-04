@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-import Users as users
-import Person as person
-import Post as post
+import Code.Users as users
+import Code.Person as person
+import Code.Post as post
 
 
 # admin and user
@@ -107,6 +107,19 @@ admin.show_friends_posts(2)
 print()
 admin.show_friends_posts(3)
 print()
+
+# group
+"""
+admin.add_group(admin_id = number, group_name = number ,description = "text")
+def remove_group(group_id)
+def add_post_in_group(group_id, post_id)
+def remove_post_from_group(group_id, post_id)
+def add_member_in_group(group_id, person_id)
+def remove_member_from_group(group_id, person_id)
+def add_admin_to_group(group_id, admin_id)
+def remove_admin_from_group(group_id, admin_id)
+def update_group_info(group_id, admin_id, group_name, description)
+"""
 
 # visualize
 print("TESTING VISUALIZATION:")
