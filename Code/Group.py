@@ -26,7 +26,7 @@ class Group:
     # ** Getters and Setters **##
 
     def get_group_id(self):
-        return self.add_group_id
+        return self.group_id
 
     def get_group_name(self):
         return self.group_name
@@ -48,6 +48,8 @@ class Group:
     
     def get_info(self):
         return self.__dict__
+    def get_groups_number(self):
+        return self.group_count
 
     def set_info(self, admin=None, name=None, description=None):
         if admin is None:
@@ -76,21 +78,21 @@ class Group:
          self.group_count = num
     
     # ** adding **##
-    def add_post(self, post):
-        self.group_posts.append(post)
+    def add_post(self, post_id):
+        self.group_posts.append(post_id)
 
     def add_admin(self, id):
         self.admin_id.append(id)
 
-    def add_member(self, person):
-        self.group_members.append(person)
+    def add_member(self, person_id):
+        self.group_members.append(person_id)
 
     # ** removing **##
-    def remove_post(self, post):
-        self.group_posts.remove(post)
+    def remove_post(self, post_id):
+        self.group_posts.remove(post_id)
 
     def remove_admin(self, admin_id):
         self.admin_id.remove(admin_id)
         
-    def remove_member(self, person):
-        self.group_members.remove(person)       
+    def remove_member(self, person_id):
+        self.group_members.remove(person_id)

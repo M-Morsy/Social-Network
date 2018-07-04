@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 import networkx as nx
 import hashing as hashing
 import numpy as np
-
+import Group as group
 
 class relation(Enum):
     Friend = 0
@@ -316,6 +316,41 @@ class Users(person.Person):
             if i[0] == id2:
                 return i[1]
         return -1
+    # ** Group ** #
+    def add_group(self,admin_id, group_name,description = None):
+        self.Groups.append(group.__init__(admin_id,group_name,description))
+    def remove_group(self,group_id):
+        for group in self.Groups:
+            if group.group_id == group_id:
+                self.Groups.remove(group)
+    def add_post_in_group(self,group_id, post_id):
+        for group in self.Groups:
+            if group.group_id == group_id:
+                group.add_post(post_id)
+    def remove_post_from_group(self,group_id, post_id):
+        for group in self.Groups:
+            if group.group_id == group_id:
+                group.remove_post(post_id)
+    def add_member_in_group(self,group_id, person_id):
+        for group in self.Groups:
+            if group.group_id == group_id:
+                group.add_member(person_id)
+    def remove_member_from_group(self,group_id, person_id):
+        for group in self.Groups:
+            if group.group_id == group_id:
+                group.remove_member(person_id)
+    def add_admin_to_group(self, group_id, admin_id):
+        for group in self.Groups:
+            if group.group_id == group_id:
+                group.add_admin(admin_id)
+    def remove_admin_from_group(self, group_id, admin_id):
+        for group in self.Groups:
+            if group.group_id == group_id:
+                group.remove_admin(admin_id)
+    def update_group_info(self, group_id, admin_id = None, group_name = None, description = None):
+        for group in self.Groups:
+            if group.group_id == group_id:
+                group.set_info(admin_id,group_name,description)
 
     # ** Extract trees and graphs ** #
     '''
