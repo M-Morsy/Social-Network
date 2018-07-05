@@ -132,7 +132,7 @@ class Users(person.Person):
         return bool(self.marks[index])
 
     # ** searching algorithm ** #
-        def search_by_age(self,age):
+    def search_by_age(self,age):
       key = hashing.ageHashFunc()
       self.ageTable[key]
 
@@ -342,7 +342,7 @@ class Users(person.Person):
             if group.group_id == group_id:
                 group.set_info(admin_id,group_name,description)
 
-      
+
     # ** Visualization ** #
     
     def post_chart(self):

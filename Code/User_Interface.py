@@ -3,7 +3,7 @@ import Users as users
 import Person as person
 import Post as post
 import re
-
+import hashing as hsh
 
 def binary_edge_search (val):
 
@@ -108,7 +108,29 @@ def admin():
         print("thanks")
         pass
 
-    # hsh search here >> how to adjust the input ?
+    flag = False
+    while flag != True:
+        name = input("If you wish to enter a name enter it, or enter 0 instead")
+        age = input("If you wish to enter a age enter it, or enter 0 instead")
+        country = input("If you wish to enter a country enter it, or enter 0 instead")
+        if name == "0" and age == "0" and country == "0":
+            pass
+
+        else:
+            if name == "0":
+                name = ""
+            if age == "0":
+                age = -1
+            if country == "0":
+                country = ""
+
+            print(hsh.search("name", name, "age", int(age), "country", country))
+
+        decide = input("""do you wist to search again ?
+         yes : 1
+         no : 2""")
+        if decide == "2":
+            flag = True
 
 def navigate(val, user_num = None):
     if val == 1:
