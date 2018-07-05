@@ -101,7 +101,9 @@ print(admin.numUsers)
 
 # ** relations ** #
 admin.add_relation(sender_id=1, receiver_id=2, weight=2)
+
 admin.accept_relation(1, 2)
+
 
 admin.add_relation(sender_id=2, receiver_id=7, weight=0)
 admin.accept_relation(2, 7)
@@ -239,13 +241,13 @@ admin.Posts[1].add_comment("With self-discipline most anything is possible", 4)
 
 admin.add_post(post.Post("Out of difficulties grow miracles", 5), 5 )
 admin.Posts[2].add_comment("my first comment", 6)
-admin.Posts[2].add_comment("my second comment :""D , 8)
+admin.Posts[2].add_comment("my second comment :D" , 8)
 admin.Posts[2].add_comment("my third comment <3 <3 <3 ", 9)
 
 
 admin.add_post(post.Post("The purpose of our lives is to be happy", 7), 7 )
 admin.Posts[3].add_comment("If you have never failed you have never lived", 8)
-admin..Posts[3].add_comment("Be yourself; everyone else is already taken", 10)
+admin.Posts[3].add_comment("Be yourself; everyone else is already taken", 10)
 
 
 admin.add_post(post.Post("A jug fills drop by drop", 9), 9 )
@@ -301,10 +303,10 @@ admin.Posts[13].add_comment("Do something wonderful, people may imitate it", 28)
 
 admin.add_post(post.Post("Life is short. Build stuff that matters", 29), 29 )
 admin.Posts[14].add_comment("Everything’s got a moral, if only you can find it", 30)
-admin.Posts[14].add_comment("You've gotta dance like there's nobody watching,
+admin.Posts[14].add_comment("""You've gotta dance like there's nobody watching,
 Love like you'll never be hurt,
 Sing like there's nobody listening,
-And live like it's heaven on earth", 36)
+And live like it's heaven on earth""", 36)
 
 
 
@@ -313,7 +315,7 @@ admin.Posts[15].add_comment("If you want to lift yourself up, lift up someone el
 admin.Posts[15].add_comment("You know you're in love when you can't fall asleep because reality is finally better than your dreams", 35)
 
 admin.add_post(post.Post("Once you choose hope, anything’s possible", 33), 33 )
-admin.Posts[post id16
+
 
 
 admin.add_post(post.Post("Live what you love", 35), 35 )
@@ -328,11 +330,11 @@ admin.Posts[18].add_comment("Be the change that you wish to see in the world", 3
 
 
 admin.add_post(post.Post("Hope is a waking dream", 39), 39 )
-admin.Posts[18].add_comment("You miss 100% of the shots you don’t take", 40)
+admin.Posts[18].add_comment("You miss 100% of the shots you don’t take", 39)
 admin.Posts[18].add_comment("In three words I can sum up everything I've learned about life: it goes on", 34)
 
 
-admin.add_post(post.Post("The mind is everything. What you think you become", 40), 40 )
+admin.add_post(post.Post("The mind is everything. What you think you become", 39), 39 )
 admin.Posts[19].add_comment("Dream big and dare to fail", 39)
 admin.Posts[19].add_comment("If you want to know what a man's like, take a good look at how he treats his inferiors, not his equals", 35)
 
@@ -340,15 +342,15 @@ admin.Posts[19].add_comment("If you want to know what a man's like, take a good 
 
 admin.add_post(post.Post("Do one thing every day that scares you", 33), 33 )
 admin.Posts[20].add_comment("Tough times never last, but tough people do", 32)
-admin.Posts[20].add_comment("Don’t walk in front of me… I may not follow
+admin.Posts[20].add_comment("""Don’t walk in front of me… I may not follow
 Don’t walk behind me… I may not lead
-Walk beside me… just be my friend", 30)
+Walk beside me… just be my friend""", 30)
 
 
 admin.add_post(post.Post("Live each day as if your life had just begun", 29), 29 )
 admin.Posts[21].add_comment("Education costs money. But then so does ignorance", 27)
-admin.Posts[21].add_comment("If you tell the truth, you don't have to remember anything
-. But then so does ignorance", 26)
+admin.Posts[21].add_comment("""If you tell the truth, you don't have to remember anything
+. But then so does ignorance""", 26)
 
 
 admin.add_post(post.Post("Set your goals high, and don’t stop till you get there", 2), 2 )
@@ -363,13 +365,13 @@ admin.Posts[23].add_comment("With self-discipline most anything is possible", 6)
 
 admin.add_post(post.Post("Out of difficulties grow miracles", 11), 11 )
 admin.Posts[24].add_comment("my first comment", 37)
-admin.Posts[24].add_comment("my second comment :""D , 36)
+admin.Posts[24].add_comment("my second comment :D " , 36)
 admin.Posts[24].add_comment("my third comment <3 <3 <3 ", 9)
 
 
 admin.add_post(post.Post("The purpose of our lives is to be happy", 15), 15 )
 admin.Posts[25].add_comment("If you have never failed you have never lived", 28)
-admin..Posts[25].add_comment("Be yourself; everyone else is already taken", 34)
+admin.Posts[25].add_comment("Be yourself; everyone else is already taken", 34)
 
 
 admin.add_post(post.Post("A jug fills drop by drop", 34), 34 )
@@ -415,7 +417,7 @@ admin.Posts[33].add_comment("A room without books is like a body without a soul"
 
 
 admin.add_post(post.Post("Things do not happen. Things are made to happen", 36), 36 )
-admin.Posts[34].add_comment("Even if you fall on your face, you’re still moving forward", 33
+admin.Posts[34].add_comment("Even if you fall on your face, you’re still moving forward", 33)
 
 
 
@@ -425,10 +427,10 @@ admin.Posts[35].add_comment("Do something wonderful, people may imitate it", 33)
 
 admin.add_post(post.Post("Life is short. Build stuff that matters", 18), 18 )
 admin.Posts[36].add_comment("Everything’s got a moral, if only you can find it", 37)
-admin.Posts[36].add_comment("You've gotta dance like there's nobody watching,
+admin.Posts[36].add_comment("""You've gotta dance like there's nobody watching,
 Love like you'll never be hurt,
 Sing like there's nobody listening,
-And live like it's heaven on earth", 29)
+And live like it's heaven on earth""", 29)
 
 
 
@@ -464,15 +466,15 @@ admin.Posts[42].add_comment("If you want to know what a man's like, take a good 
 
 admin.add_post(post.Post("Do one thing every day that scares you", 32), 32 )
 admin.Posts[43].add_comment("Tough times never last, but tough people do", 32)
-admin.Posts[43].add_comment("Don’t walk in front of me… I may not follow
+admin.Posts[43].add_comment("""Don’t walk in front of me… I may not follow
 Don’t walk behind me… I may not lead
-Walk beside me… just be my friend", 30)
+Walk beside me… just be my friend""", 30)
 
 
 admin.add_post(post.Post("Live each day as if your life had just begun", 39), 39 )
 admin.Posts[44].add_comment("Education costs money. But then so does ignorance", 27)
-admin.Posts[44].add_comment("If you tell the truth, you don't have to remember anything
-. But then so does ignorance", 26)
+admin.Posts[44].add_comment("""If you tell the truth, you don't have to remember anything
+. But then so does ignorance""", 26)
 
 
 
@@ -502,3 +504,5 @@ print(hsh.search("name", "lyla"))   # should print []
 SL.save(admin)
 # check file:  users_data.json to check data base
 # run file: load_test.py to test loading
+
+

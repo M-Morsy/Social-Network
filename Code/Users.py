@@ -132,17 +132,7 @@ class Users(person.Person):
         return bool(self.marks[index])
 
     # ** searching algorithm ** #
-    def DepthFirstSearch(self, startUser, endUser):
-        pass
-
-    def BreadthFirtsSearch(self, startUser, endUser):
-        pass
-
-    def bounded_search (self):
-        # Search for some one who is not my friend (by email or ID?)
-        pass
-
-    def search_by_age(self,age):
+        def search_by_age(self,age):
       key = hashing.ageHashFunc()
       self.ageTable[key]
 
@@ -248,10 +238,10 @@ class Users(person.Person):
     def show_received_requests (self, user_id):
         return self.Users[user_id].requests_received
 
-    def search_friends(self, user_id, taget_id):
+    def search_friends(self, user_id, target_id):
         id_list = list()
         id_list = self.edges[user_id]
-        return id_list.index(taget_id)
+        return id_list.index(target_id)
 
     def show_friends(self, user_id):
         # to be changed later >> when id is more complex function: id_to_index(id = user_id) & vice versa
@@ -352,34 +342,7 @@ class Users(person.Person):
             if group.group_id == group_id:
                 group.set_info(admin_id,group_name,description)
 
-    # ** Extract trees and graphs ** #
-    '''
-        # this code depend on graph on node names
-        """
-        graph = {'A': ['B', 'C'],
-                 'B': ['C', 'D'],
-                 'C': ['D'],
-                 'D': ['C'],
-                 'E': ['F'],
-                 'F': ['C']}
-        """
-        def find_shortest_path(self, start_id, end_id, path=[]):
-            path = path + [start_id]
-            if start_id == end_id:
-                return path
-            shortest = None
-            for node in range(self.edges[start_id]):
-                if node not in path:
-                    print(self.edges[start_id])
-                    print(node)
-                    print()
-                    newpath = self.find_shortest_path(node, end_id, path)
-                    if newpath:
-                        if not shortest or len(newpath) < len(shortest):
-                            shortest = newpath
-            return shortest
-        '''
-
+      
     # ** Visualization ** #
     
     def post_chart(self):
@@ -452,7 +415,7 @@ class Users(person.Person):
         print(names)
         pass
 
-    '''
+
     def is_sub_list(self, g, l):
         return all(True if x in g else False for x in l)
 
@@ -483,4 +446,3 @@ class Users(person.Person):
         nx.draw_networkx_edge_labels(g, pos)
         plt.show()
         pass
-        '''
