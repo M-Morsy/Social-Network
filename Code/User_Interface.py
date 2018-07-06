@@ -102,33 +102,53 @@ def admin():
 
     option = input("""Do you want to search some users of the same properties ?
     yes : 1
-    no : 2""")
-    option = int (option)
+    no : 2\n""")
+    option = int(option)
     if option == 2:
         print("thanks")
         pass
 
     flag = False
     while flag != True:
-        name = input("If you wish to enter a name enter it, or enter 0 instead")
-        age = input("If you wish to enter a age enter it, or enter 0 instead")
-        country = input("If you wish to enter a country enter it, or enter 0 instead")
+        name = input("If you wish to enter a name enter it, or enter 0 instead \n")
+        age = input("If you wish to enter a age enter it, or enter 0 instead\n")
+        age = int(age)
+        country = input("If you wish to enter a country enter it, or enter 0 instead\n")
         if name == "0" and age == "0" and country == "0":
+            print("not a valid search")
+            pass
+        elif name != "0" and age != "0" and country != "0":
+            print("searching with name, age, and country")
+            print(hsh.search("age", age, "name", name, "country", country))
             pass
 
-        else:
-            if name == "0":
-                name = ""
-            if age == "0":
-                age = -1
-            if country == "0":
-                country = ""
+        elif name != "0" and age != 0:
+            print("searching with name and age")
+            print(hsh.search("name", name, "age", age))
 
-            print(hsh.search("name", name, "age", int(age), "country", country))
+        elif country != "0" and age != 0:
+            print("searching with country and age")
+            print(hsh.search("country", country, "age", age))
 
-        decide = input("""do you wist to search again ?
+        elif name != "0" and country != "0":
+            print("searching with name and country")
+            print(hsh.search("name", name, "country", country))
+
+        elif name == "0" and age == 0:
+            print("searching with country only")
+            print(hsh.search("country", country))
+
+        elif country == "0" and age == 0:
+            print("searching with name only")
+            print(hsh.search("name", name))
+
+        elif name == "0" and country == "0":
+            print("searching with age only")
+            print(hsh.search("age", age))
+
+        decide = input("""do you wish to search again ?
          yes : 1
-         no : 2""")
+         no : 2 \n""")
         if decide == "2":
             flag = True
 
@@ -192,7 +212,7 @@ def navigate(val, user_num = None):
                 print("Email is invalid")
         password = input("password: ")
 
-        # check if user exists : binary search
+        # check if user exists
         flag = False
         user_num = -1
         for i in range(num):
