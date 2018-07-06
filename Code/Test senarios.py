@@ -475,6 +475,85 @@ admin.add_post(post.Post("Live each day as if your life had just begun", 39), 39
 admin.Posts[44].add_comment("Education costs money. But then so does ignorance", 27)
 admin.Posts[44].add_comment("""If you tell the truth, you don't have to remember anything
 . But then so does ignorance""", 26)
+admin.add_post(post.Post("Hope is a waking dream", 39), 39 )
+admin.Posts[45].add_comment("You miss 100% of the shots you don’t take", 40)
+admin.Posts[45].add_comment("In three words I can sum up everything I've learned about life: it goes on", 34)
+
+
+
+
+admin.add_post(post.Post("Live what you love", 15),15 )
+admin.Posts[46].add_comment("All things are possible if you believe", 36)
+admin.Posts[46].add_comment("You only live once, but if you do it right, once is enough.", 38)
+
+
+admin.add_post(post.Post("What consumes your mind, controls your life", 27), 27 )
+admin.Posts[47].add_comment("You are stronger then you think", 38)
+admin.Posts[47].add_comment("Be the change that you wish to see in the world", 39)
+
+
+
+
+admin.add_post(post.Post("The mind is everything. What you think you become", 30), 30 )
+admin.Posts[48].add_comment("Dream big and dare to fail", 39)
+admin.Posts[48].add_comment("If you want to know what a man's like, take a good look at how he treats his inferiors, not his equals", 35)
+
+
+
+admin.add_post(post.Post("Do one thing every day that scares you", 23), 23 )
+admin.Posts[49].add_comment("Tough times never last, but tough people do", 32)
+admin.Posts[49].add_comment("Don’t walk in front of me… I may not follow
+Don’t walk behind me… I may not lead
+Walk beside me… just be my friend", 30)
+
+
+admin.add_post(post.Post("Live each day as if your life had just begun", 37), 37 )
+admin.Posts[50].add_comment("Education costs money. But then so does ignorance", 27)
+admin.Posts[50].add_comment("If you tell the truth, you don't have to remember anything
+. But then so does ignorance", 26)
+
+
+admin.add_post(post.Post("Set your goals high, and don’t stop till you get there", 12), 12 )
+admin.Posts[51].add_comment("Motivation will almost always beat mere talent", 1)
+admin.Posts[51].add_comment("Don't cry because it's over, smile because it happened", 2)
+admin.Posts[51].add_comment("I'm selfish, impatient and a little insecure. I make mistakes, I am out of control and at times hard to handle. But if you can't handle me at my worst, then you sure as hell don't deserve me at my best", 1)
+
+
+admin.add_post(post.Post("It’s always too early to quit", 14), 14 )
+admin.Posts[52].add_comment("With self-discipline most anything is possible", 6)
+
+
+admin.add_post(post.Post("Out of difficulties grow miracles", 17), 17 )
+admin.Posts[53].add_comment("my first comment", 37)
+admin.Posts[53].add_comment("my second comment :""D , 36)
+admin.Posts[53].add_comment("my third comment <3 <3 <3 ", 9)
+
+
+admin.add_post(post.Post("The purpose of our lives is to be happy", 25), 25 )
+admin.Posts[54].add_comment("If you have never failed you have never lived", 28)
+admin..Posts[54].add_comment("Be yourself; everyone else is already taken", 34)
+
+
+admin.add_post(post.Post("A jug fills drop by drop", 24), 24 )
+admin.Posts[55].add_comment("The harder I work, the luckier I get", 40)
+
+
+
+admin.add_post(post.Post("If there is no struggle, there is no progress", 18), 18 )
+admin.Posts[56].add_comment("Believe and act as if it were impossible to fail", 20)
+admin.Posts[56].add_comment("Two things are infinite: the universe and human stupidity; and I'm not sure about the universe", 5)
+
+admin.add_post(post.Post("Dream big and dare to fail", 22), 22 )
+admin.Posts[57].add_comment("Turn your wounds into wisdom", 2)
+admin.Posts[57].add_comment("Turn your wounds into wisdom", 3)
+
+
+
+admin.add_post(post.Post("Hope is a waking dream", 19), 19 )
+admin.Posts[58].add_comment("You miss 100% of the shots you don’t take", 40)
+admin.Posts[58].add_comment("In three words I can sum up everything I've learned about life: it goes on", 34)
+
+
 
 
 
