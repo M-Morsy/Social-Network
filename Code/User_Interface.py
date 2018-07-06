@@ -203,7 +203,67 @@ def navigate(val, user_num = None):
         if flag:
             return user_num
         elif email == "admin@tirope.com" and password == "super_admin":
-            admin()
+
+            print("WELCOME TO ADMIN SIDE:")
+            print("your network graph:")
+            admin.show_graph()
+            print("Histogram of the most effective users")
+            print("POSTS CHART:")
+            admin.post_chart()
+            print("COMMENTS CHART:")
+            admin.comment_chart()
+
+            option = input("""Do you want to search some users of the same properties ?
+            yes : 1
+            no : 2\n""")
+            option = int(option)
+            if option == 2:
+                print("thanks")
+                pass
+
+            flag = False
+            while flag != True:
+                name = input("If you wish to enter a name enter it, or enter 0 instead \n")
+                age = input("If you wish to enter a age enter it, or enter 0 instead\n")
+                age = int(age)
+                country = input("If you wish to enter a country enter it, or enter 0 instead\n")
+                if name == "0" and age == "0" and country == "0":
+                    print("not a valid search")
+                    pass
+                elif name != "0" and age != "0" and country != "0":
+                    print("searching with name, age, and country")
+                    print(hsh.search("age", age, "name", name, "country", country))
+                    pass
+
+                elif name != "0" and age != 0:
+                    print("searching with name and age")
+                    print(hsh.search("name", name, "age", age))
+
+                elif country != "0" and age != 0:
+                    print("searching with country and age")
+                    print(hsh.search("country", country, "age", age))
+
+                elif name != "0" and country != "0":
+                    print("searching with name and country")
+                    print(hsh.search("name", name, "country", country))
+
+                elif name == "0" and age == 0:
+                    print("searching with country only")
+                    print(hsh.search("country", country))
+
+                elif country == "0" and age == 0:
+                    print("searching with name only")
+                    print(hsh.search("name", name))
+
+                elif name == "0" and country == "0":
+                    print("searching with age only")
+                    print(hsh.search("age", age))
+
+                decide = input("""do you wish to search again ?
+                 yes : 1
+                 no : 2 \n""")
+                if decide == "2":
+                    flag = True
             return -2
         else:
             return -1
@@ -227,33 +287,39 @@ if option == '1':
     navigate(1)
     admin.show_graph()
     SL.save(admin)
+elif option == '2':
 
-# code to login
-user_num = navigate(4)
-if user_num == -1:
-    print("Error")
+    # code to login
+    user_num = navigate(4)
+    if user_num == -1:
+        print("Error")
 
-elif user_num == -2:
-    print("Thanks ADMIN !!")
+    elif user_num == -2:
+        print("Thanks ADMIN !!")
+    else:
+        # print(user_num) # aurora@gmail.com  aurora;ol7  # 16
+        print("Your Profile")
+        print("-----------")
+        print("name: ", admin.Users[user_num].name)
+        print("email: ", admin.Users[user_num].email)
+        print(" What do you wish to do ?")
+        option = input(""" More Information : 1
+                  Timeline : 2
+                  """)
+
+        if option == '1':
+            navigate(3, user_num)   # profile info
+            input()
+            navigate(2, user_num)   # Timeline
+            input()
+        elif option == '2' :
+            navigate(2, user_num)
+            input()
+
+        print("Thanks !")
+        input("TiRope Closed !!")
+
 else:
-    # print(user_num) # aurora@gmail.com  aurora;ol7  # 16
-    print("Your Profile")
-    print("-----------")
-    print("name: ", admin.Users[user_num].name)
-    print("email: ", admin.Users[user_num].email)
-    print(" What do you wish to do ?")
-    option = input(""" More Information : 1
-              Timeline : 2
-              """)
-
-    if option == '1':
-        navigate(3, user_num)   # profile info
-        input()
-        navigate(2, user_num)   # Timeline
-        input()
-    elif option == '2' :
-        navigate(2, user_num)
-        input()
-
+    print("wrong input")
     print("Thanks !")
-
+    input("TiRope Closed !!")
