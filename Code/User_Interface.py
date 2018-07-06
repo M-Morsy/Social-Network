@@ -5,8 +5,8 @@ import Post as post
 import re
 import hashing as hsh
 
-def binary_edge_search (val):
 
+def binary_edge_search(val):
     upper = admin.Users.edges.Length - 1
     lower = 0
     while lower <= upper:
@@ -20,7 +20,7 @@ def binary_edge_search (val):
     return -1
 
 
-def add_relation (user_num):
+def add_relation(user_num):
     print("send a request to a user from the list:")
     for i in admin.numUsers:
         print(admin.Users[i].id, admin.Users[0].name)
@@ -32,14 +32,12 @@ def add_relation (user_num):
                         sibling: 3
                         relative: 4
                         """)
-    admin.add_relation(sender_id=user_num,
-                       receiver_id=user_num_2,
-                       weight=int(relation))
-    print("waiting for confirmation from other user to establish relation" )
+    admin.add_relation(sender_id=user_num, receiver_id=user_num_2, weight=int(relation))
+    print("waiting for confirmation from other user to establish relation")
     SL.save(admin)
 
 
-def accept_relation (user_num):
+def accept_relation(user_num):
     print("Users who sent you requests")
     for i in admin.Users[2].requests_received:
         print(i, ":", admin.Users[i].name)
@@ -54,9 +52,9 @@ def write_post(user_num):
     SL.save(admin)
 
 
-def comment (user_num):
+def comment(user_num):
     post_id = input("Which post id ?")
-    post_id = int (post_id)
+    post_id = int(post_id)
     admin.Posts[post_id].add_comment(input("please enter your comment text: "), user_num)
     SL.save(admin)
 
@@ -152,7 +150,8 @@ def admin():
         if decide == "2":
             flag = True
 
-def navigate(val, user_num = None):
+
+def navigate(val, user_num=None):
     if val == 1:
         # registeration
         flag = False
@@ -179,7 +178,6 @@ def navigate(val, user_num = None):
 
         admin.AddUser(person.Person(name, email, password, age, location, gender))
 
-
         pass
     elif val == 2:
         # timeline
@@ -188,7 +186,6 @@ def navigate(val, user_num = None):
         admin.get_friends_posts(user_num)
         input()
         actions(user_num)
-
 
         pass
     elif val == 3:
@@ -217,11 +214,13 @@ def navigate(val, user_num = None):
         user_num = -1
         for i in range(num):
             if (admin.Users[i].get_email() == email) and (admin.Users[i].get_password() == password):
-                flag == True
+                flag = True
                 user_num = i
                 break
-        if flag:
+
+        if flag == True:
             return user_num
+
         elif email == "admin@tirope.com" and password == "super_admin":
 
             print("WELCOME TO ADMIN SIDE:")
@@ -286,13 +285,14 @@ def navigate(val, user_num = None):
                     flag = True
             return -2
         else:
+
             return -1
-        # login
+            # login
 
 
 # load graph data
 num = SL.getUsersNum()
-admin = users.Users(num*2)
+admin = users.Users(num * 2)
 SL.load(admin)
 
 print(admin.numUsers)
@@ -307,39 +307,34 @@ if option == '1':
     navigate(1)
     admin.show_graph()
     SL.save(admin)
-elif option == '2':
 
-    # code to login
-    user_num = navigate(4)
-    if user_num == -1:
-        print("Error")
+# code to login
+user_num = navigate(4)
+print(user_num)
+if user_num == -1:
+    print("Error")
 
-    elif user_num == -2:
-        print("Thanks ADMIN !!")
-    else:
-        # print(user_num) # aurora@gmail.com  aurora;ol7  # 16
-        print("Your Profile")
-        print("-----------")
-        print("name: ", admin.Users[user_num].name)
-        print("email: ", admin.Users[user_num].email)
-        print(" What do you wish to do ?")
-        option = input(""" More Information : 1
+elif user_num == -2:
+    print("Thanks ADMIN !!")
+else:
+    # print(user_num) # aurora@gmail.com  aurora;ol7  # 16
+    print("Your Profile")
+    print("-----------")
+    print("name: ", admin.Users[user_num].name)
+    print("email: ", admin.Users[user_num].email)
+    print(" What do you wish to do ?")
+    option = input(""" More Information : 1
                   Timeline : 2
                   """)
 
-        if option == '1':
-            navigate(3, user_num)   # profile info
-            input()
-            navigate(2, user_num)   # Timeline
-            input()
-        elif option == '2' :
-            navigate(2, user_num)
-            input()
+    if option == '1':
+        navigate(3, user_num)  # profile info
+        input()
+        navigate(2, user_num)  # Timeline
+        input()
+    elif option == '2':
+        navigate(2, user_num)
+        input()
 
-        print("Thanks !")
-        input("TiRope Closed !!")
-
-else:
-    print("wrong input")
     print("Thanks !")
     input("TiRope Closed !!")
