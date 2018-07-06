@@ -559,6 +559,8 @@ admin.Posts[58].add_comment("In three words I can sum up everything I've learned
 '''                            
                             
  
+
+
 admin.add_group(admin_id = 15, group_name = 1 ,description = "Soccer")
 admin.remove_group(1)
 admin.add_post_in_group(1, 47)
@@ -598,7 +600,34 @@ admin.add_member_in_group(3, 17)
 admin.add_member_in_group(3, 39)
 admin.remove_member_from_group(3, 39)
 admin.add_admin_to_group(3, 17)
-admin.remove_admin_from_group(3, 14)                           
+admin.remove_admin_from_group(3, 14)
+
+
+
+
+admin.add_group(admin_id = 25, group_name = 0 ,description = "Science")
+admin.remove_group(0)
+admin.add_group(admin_id = 25, group_name = 0 ,description = "Scientific experiments")
+admin.add_post_in_group(0, 54)
+admin.add_post_in_group(0, 55)
+admin.add_post_in_group(0, 56)
+admin.add_member_in_group(0, 25)
+admin.add_member_in_group(0, 24)
+admin.add_member_in_group(0, 18)
+admin.update_group_info(0, 25, 0, NationalGeographics)
+
+
+
+
+admin.add_group(admin_id = 22, group_name = 4 ,description = "Spiritual")
+admin.add_post_in_group(4, 56)
+admin.add_post_in_group(4, 57)
+admin.add_post_in_group(4, 58)
+admin.remove_post_from_group(4, 57)
+admin.add_member_in_group(4, 22)
+admin.add_member_in_group(4, 19)
+admin.add_member_in_group(4, 18)
+admin.remove_member_from_group(4, 22)
 
 ...  
 
