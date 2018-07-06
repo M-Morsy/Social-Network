@@ -554,6 +554,54 @@ admin.Posts[58].add_comment("You miss 100% of the shots you don’t take", 40)
 admin.Posts[58].add_comment("In three words I can sum up everything I've learned about life: it goes on", 34)
 
 
+                            
+# ** Groups Test ** #
+'''                            
+                            
+ 
+admin.add_group(admin_id = 15, group_name = 1 ,description = "Soccer")
+admin.remove_group(1)
+admin.add_post_in_group(1, 47)
+admin.add_post_in_group(1, 48)
+admin.add_post_in_group(1, 46)
+admin.remove_post_from_group(1, 46)
+admin.add_member_in_group(1, 15)
+admin.add_member_in_group(1, 27)
+admin.add_member_in_group(1, 30)
+admin.add_member_in_group(1, 23)
+admin.remove_member_from_group(1, 23)
+admin.add_admin_to_group(1, 15)
+admin.update_group_info(1, 15, SoccerGame, footballfNS)
+
+
+
+admin.add_group(admin_id = 23, group_name = 2 ,description = "Makeup")
+admin.add_post_in_group(2, 49)
+admin.add_post_in_group(2, 50)
+admin.add_post_in_group(2, 51)
+admin.add_member_in_group(2, 37)
+admin.add_member_in_group(2, 12)
+admin.add_admin_to_group(2, 12)
+admin.remove_admin_from_group(2, 12)
+
+
+
+
+
+admin.add_group(admin_id = 14, group_name = 3 ,description = "Foodies")
+admin.add_post_in_group(3, 45)
+admin.add_post_in_group(3, 52)
+admin.add_post_in_group(3, 53)
+admin.remove_post_from_group(3, 53)
+admin.add_member_in_group(3, 14)
+admin.add_member_in_group(3, 17)
+admin.add_member_in_group(3, 39)
+admin.remove_member_from_group(3, 39)
+admin.add_admin_to_group(3, 17)
+admin.remove_admin_from_group(3, 14)                           
+
+...  
+
 
 
 
