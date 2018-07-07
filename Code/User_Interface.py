@@ -22,7 +22,7 @@ def binary_edge_search(val):
 
 def add_relation(user_num):
     print("send a request to a user from the list:")
-    for i in admin.numUsers:
+    for i in range(admin.numUsers):
         print(admin.Users[i].id, admin.Users[0].name)
     input()
     user_num_2 = input("select user id to send him/her a request")
@@ -47,10 +47,9 @@ def accept_relation(user_num):
 
 
 def write_post(user_num):
-    input("please enter your post text")
+   # input("please enter your post text")
     admin.add_post(post.Post(input("please enter your post text: "), user_num), user_num)
     SL.save(admin)
-
 
 def comment(user_num):
     post_id = input("Which post id ?")
@@ -60,7 +59,7 @@ def comment(user_num):
 
 
 def actions(user_num):
-    option = input("""Do you wanna add actions ? 
+    option = input("""Do you wanna add actions ?
             yes : 1
             no : 2""")
     option = int(option)
@@ -78,10 +77,8 @@ def actions(user_num):
     option2 = int(option2)
     if option2 == 1:
         write_post(user_num)
-
     elif option2 == 2:
         comment(user_num)
-
     elif option2 == 3:
         add_relation(user_num)
     elif option2 == 4:
@@ -335,6 +332,8 @@ else:
     elif option == '2':
         navigate(2, user_num)
         input()
+    while True:
+        actions(user_num)
 
     print("Thanks !")
-    input("TiRope Closed !!")
+    input("TitRope Closed !!")

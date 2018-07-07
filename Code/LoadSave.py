@@ -5,9 +5,9 @@ Created on Mon Apr 23 21:40:59 2018
 @author: maged
 """
 import json
-import Users as users
-import Person as person
-import Post as post
+import Code.Users as users
+import Code.Person as person
+import Code.Post as post
 
                         
     #takes the whole graph represnting the system and save it in a json file

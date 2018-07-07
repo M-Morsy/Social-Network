@@ -306,6 +306,7 @@ class Users(person.Person):
             if i[0] == id2:
                 return i[1]
         return -1
+
     # ** Group ** #
     def add_group(self,admin_id, group_name,description = None):
         self.Groups.append(group.__init__(admin_id,group_name,description))

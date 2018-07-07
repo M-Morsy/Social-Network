@@ -36,3 +36,5 @@ print(p2.get_posts_ids())
 print(p1.get_name(), "'s age is ", p1.get_age())
 
 
+
+

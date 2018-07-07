@@ -502,15 +502,12 @@ admin.Posts[48].add_comment("If you want to know what a man's like, take a good 
 
 admin.add_post(post.Post("Do one thing every day that scares you", 23), 23 )
 admin.Posts[49].add_comment("Tough times never last, but tough people do", 32)
-admin.Posts[49].add_comment("Don’t walk in front of me… I may not follow
-Don’t walk behind me… I may not lead
-Walk beside me… just be my friend", 30)
+admin.Posts[49].add_comment("Don’t walk in front of me… I may not follow Don’t walk behind me… I may not lead Walk beside me… just be my friend", 30)
 
 
 admin.add_post(post.Post("Live each day as if your life had just begun", 37), 37 )
 admin.Posts[50].add_comment("Education costs money. But then so does ignorance", 27)
-admin.Posts[50].add_comment("If you tell the truth, you don't have to remember anything
-. But then so does ignorance", 26)
+admin.Posts[50].add_comment("If you tell the truth, you don't have to remember anything.But then so does ignorance", 26)
 
 
 admin.add_post(post.Post("Set your goals high, and don’t stop till you get there", 12), 12 )
@@ -525,13 +522,13 @@ admin.Posts[52].add_comment("With self-discipline most anything is possible", 6)
 
 admin.add_post(post.Post("Out of difficulties grow miracles", 17), 17 )
 admin.Posts[53].add_comment("my first comment", 37)
-admin.Posts[53].add_comment("my second comment :""D , 36)
+admin.Posts[53].add_comment("my second comment :""D ", 36)
 admin.Posts[53].add_comment("my third comment <3 <3 <3 ", 9)
 
 
 admin.add_post(post.Post("The purpose of our lives is to be happy", 25), 25 )
 admin.Posts[54].add_comment("If you have never failed you have never lived", 28)
-admin..Posts[54].add_comment("Be yourself; everyone else is already taken", 34)
+admin.Posts[54].add_comment("Be yourself; everyone else is already taken", 34)
 
 
 admin.add_post(post.Post("A jug fills drop by drop", 24), 24 )
@@ -632,8 +629,6 @@ admin.remove_member_from_group(4, 22)
 ...  
 
 
-
-
 # ** hashing test ** #
 '''
 p9 = person.Person("Fynn", "fynn@gmail.com", "fynn;o9" ,13, "Poland" , "Female")
@@ -660,5 +655,5 @@ print(hsh.search("name", "lyla"))   # should print []
 SL.save(admin)
 # check file:  users_data.json to check data base
 # run file: load_test.py to test loading
-
+'''
 
