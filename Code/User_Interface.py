@@ -4,7 +4,7 @@ import Person as person
 import Post as post
 import re
 import hashing as hsh
-
+import Group as group
 
 def binary_edge_search(val):
     upper = admin.Users.edges.Length - 1
@@ -23,8 +23,8 @@ def binary_edge_search(val):
 def add_relation(user_num):
     print("send a request to a user from the list:")
     for i in range(admin.numUsers):
-        print(admin.Users[i].id, admin.Users[0].name)
-    input()
+        print(i, admin.Users[i].name)
+    #input()
     user_num_2 = input("select user id to send him/her a request")
     relation = input(""" What is your relation to the user ?
                         friend: 1
@@ -32,7 +32,7 @@ def add_relation(user_num):
                         sibling: 3
                         relative: 4
                         """)
-    admin.add_relation(sender_id=user_num, receiver_id=user_num_2, weight=int(relation))
+    admin.add_relation(sender_id=int(user_num), receiver_id=int(user_num_2), weight=int(relation))
     print("waiting for confirmation from other user to establish relation")
     SL.save(admin)
 
@@ -42,7 +42,7 @@ def accept_relation(user_num):
     for i in admin.Users[2].requests_received:
         print(i, ":", admin.Users[i].name)
     user_num_2 = input("enter the user's id: ")
-    admin.accept_relation(user_num, user_num_2)
+    admin.accept_relation(int(user_num), int(user_num_2))
     SL.save(admin)
 
 
@@ -57,22 +57,72 @@ def comment(user_num):
     admin.Posts[post_id].add_comment(input("please enter your comment text: "), user_num)
     SL.save(admin)
 
+def group_stuff(user_num):
+    print("What do you want? \n 1: create new group \n 2: join group \n 3: leave group \n 4: add new admin to the group"
+          + "\n 5: remove admin from the group \n 6: add post to the group \n 7: remove post from the group \n 8: update group information")
+    choose = input()
+    if choose == 1:
+            print("group name:")
+            name = input()
+            print("group description:")
+            des = input()
+            admin.add_group(user_num, name, des),
+    elif choose == 2:
+            print("group id:")
+            id = input()
+            admin.add_member_in_group(id, user_num)
+    elif choose == 3:
+            print("group id:")
+            id = input()
+            admin.remove_member_from_group(id, user_num)
+    elif choose == 4:
+            print("group id:")
+            id = input()
+            admin.add_admin_to_group(id, user_num)
+    elif choose == 5:
+            print("group id:")
+            id = input()
+            admin.remove_admin_from_group(id, user_num)
+    elif choose == 6:
+            print("group id:")
+            id = input()
+            print("post id:")
+            id_post = input()
+            admin.add_post_in_group(id, id_post)
+    elif choose == 7:
+            print("group id:")
+            id = input()
+            print("post id:")
+            id_post = input()
+            admin.remove_post_from_group(id, id_post)
+    elif choose == 8:
+            print("group id:")
+            id = input()
+            print("group name:")
+            name = input()
+            print("group description:")
+            des = input()
+            admin.update_group_info(id, user_num, name, des)
+
 
 def actions(user_num):
     option = input("""Do you wanna add actions ?
             yes : 1
             no : 2""")
     option = int(option)
-    if option == 2:
+    if option == 1:
         pass
-    elif option != 1:
+    elif option == 2:
+        return 2
+    else:
         print("Error")
-        pass
+        return -1
     option2 = input("""Do you want to: 
                 post: 1
                 comment: 2
                 add relation: 3
                 accept relation: 4
+                group: 5
                 """)
     option2 = int(option2)
     if option2 == 1:
@@ -83,7 +133,8 @@ def actions(user_num):
         add_relation(user_num)
     elif option2 == 4:
         accept_relation(user_num)
-
+    elif option2 == 5:
+        group_stuff(user_num)
 
 def admin():
     print("WELCOME TO ADMIN SIDE:")
@@ -181,8 +232,8 @@ def navigate(val, user_num=None):
         print("YOUR TIMELINE: ")
         print("---------------")
         admin.get_friends_posts(user_num)
-        input()
-        actions(user_num)
+        #input()
+        #actions(user_num)
 
         pass
     elif val == 3:
@@ -333,7 +384,9 @@ else:
         navigate(2, user_num)
         input()
     while True:
-        actions(user_num)
+        num = actions(user_num)
+        if num != 1:
+            break
 
     print("Thanks !")
     input("TitRope Closed !!")

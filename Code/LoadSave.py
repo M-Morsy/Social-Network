@@ -67,7 +67,7 @@ def load(graph):
             graph.Users[-1].requests_sent[int(x)] = int(one["requests_sent"][x])
             
         for x in one["requests_received"]:
-            graph.Users[-1].requests_received[int(x)] = int(one["requests_sent"][x])
+            graph.Users[-1].requests_received[int(x)] = int(one["requests_received"][x])
         
         
     graph.edges=[]

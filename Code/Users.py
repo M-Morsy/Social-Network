@@ -213,7 +213,6 @@ class Users(person.Person):
             self.Users[receiver_id].requests_received[sender_id] = 2
 
         else:
-
             self.Users[receiver_id].requests_received[sender_id] = weight
 
     def accept_relation(self, sender_id, receiver_id):
@@ -309,7 +308,7 @@ class Users(person.Person):
 
     # ** Group ** #
     def add_group(self,admin_id, group_name,description = None):
-        self.Groups.append(group.__init__(admin_id,group_name,description))
+        self.Groups.append(group.Group(admin_id,group_name,description))
     def remove_group(self,group_id):
         for group in self.Groups:
             if group.group_id == group_id:
