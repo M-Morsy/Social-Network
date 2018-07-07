@@ -558,36 +558,10 @@ admin.Posts[58].add_comment("In three words I can sum up everything I've learned
  
 
 
-admin.add_group(admin_id = 15, group_name = 1 ,description = "Soccer")
-admin.remove_group(1)
-admin.add_post_in_group(1, 47)
-admin.add_post_in_group(1, 48)
-admin.add_post_in_group(1, 46)
-admin.remove_post_from_group(1, 46)
-admin.add_member_in_group(1, 15)
-admin.add_member_in_group(1, 27)
-admin.add_member_in_group(1, 30)
-admin.add_member_in_group(1, 23)
-admin.remove_member_from_group(1, 23)
-admin.add_admin_to_group(1, 15)
-admin.update_group_info(1, 15, SoccerGame, footballfNS)
 
 
 
-admin.add_group(admin_id = 23, group_name = 2 ,description = "Makeup")
-admin.add_post_in_group(2, 49)
-admin.add_post_in_group(2, 50)
-admin.add_post_in_group(2, 51)
-admin.add_member_in_group(2, 37)
-admin.add_member_in_group(2, 12)
-admin.add_admin_to_group(2, 12)
-admin.remove_admin_from_group(2, 12)
-
-
-
-
-
-admin.add_group(admin_id = 14, group_name = 3 ,description = "Foodies")
+admin.add_group( 14, "Foodies" , "FoodRciepes")
 admin.add_post_in_group(3, 45)
 admin.add_post_in_group(3, 52)
 admin.add_post_in_group(3, 53)
@@ -602,9 +576,8 @@ admin.remove_admin_from_group(3, 14)
 
 
 
-admin.add_group(admin_id = 25, group_name = 0 ,description = "Science")
+admin.add_group(25, "ScientificFacts" ,"ScienceInfo")
 admin.remove_group(0)
-admin.add_group(admin_id = 25, group_name = 0 ,description = "Scientific experiments")
 admin.add_post_in_group(0, 54)
 admin.add_post_in_group(0, 55)
 admin.add_post_in_group(0, 56)
@@ -616,7 +589,7 @@ admin.update_group_info(0, 25, 0, NationalGeographics)
 
 
 
-admin.add_group(admin_id = 22, group_name = 4 ,description = "Spiritual")
+admin.add_group(22, "PositiveEnergy" , "Spiritual Group")
 admin.add_post_in_group(4, 56)
 admin.add_post_in_group(4, 57)
 admin.add_post_in_group(4, 58)
@@ -625,6 +598,36 @@ admin.add_member_in_group(4, 22)
 admin.add_member_in_group(4, 19)
 admin.add_member_in_group(4, 18)
 admin.remove_member_from_group(4, 22)
+
+
+
+admin.add_group(15, "Soccer" ,"computer vision group")
+admin.add_post_in_group(0, 47)
+admin.add_post_in_group(0, 48)
+admin.add_post_in_group(0, 46)
+admin.remove_post_from_group(0, 46)
+admin.add_member_in_group(0, 15)
+admin.add_member_in_group(0, 27)
+admin.add_member_in_group(0, 30)
+admin.add_member_in_group(0, 23)
+admin.remove_member_from_group(0, 23)
+admin.add_admin_to_group(0, 15)
+admin.update_group_info(0, 15, "SoccerGame", "footballfNS")
+
+
+
+
+admin.add_group(23, "Makeup","Makeup")
+admin.add_post_in_group(1, 49)
+admin.add_post_in_group(1, 50)
+admin.add_post_in_group(1, 51)
+admin.add_member_in_group(1, 37)
+admin.add_member_in_group(1, 12)
+admin.add_admin_to_group(1, 12)
+admin.remove_admin_from_group(1, 12)
+
+
+
 
 ...  
 
