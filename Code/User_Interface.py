@@ -58,51 +58,54 @@ def comment(user_num):
     SL.save(admin)
 
 def group_stuff(user_num):
-    print("What do you want? \n 1: create new group \n 2: join group \n 3: leave group \n 4: add new admin to the group"
-          + "\n 5: remove admin from the group \n 6: add post to the group \n 7: remove post from the group \n 8: update group information")
-    choose = input()
-    if choose == 1:
-            print("group name:")
-            name = input()
-            print("group description:")
-            des = input()
-            admin.add_group(user_num, name, des),
-    elif choose == 2:
-            print("group id:")
-            id = input()
-            admin.add_member_in_group(id, user_num)
-    elif choose == 3:
-            print("group id:")
-            id = input()
-            admin.remove_member_from_group(id, user_num)
-    elif choose == 4:
-            print("group id:")
-            id = input()
-            admin.add_admin_to_group(id, user_num)
-    elif choose == 5:
-            print("group id:")
-            id = input()
-            admin.remove_admin_from_group(id, user_num)
-    elif choose == 6:
-            print("group id:")
-            id = input()
-            print("post id:")
-            id_post = input()
-            admin.add_post_in_group(id, id_post)
-    elif choose == 7:
-            print("group id:")
-            id = input()
-            print("post id:")
-            id_post = input()
-            admin.remove_post_from_group(id, id_post)
-    elif choose == 8:
-            print("group id:")
-            id = input()
-            print("group name:")
-            name = input()
-            print("group description:")
-            des = input()
-            admin.update_group_info(id, user_num, name, des)
+    choose = 10
+    while choose != 9:
+        print("What do you want? \n 1: create new group \n 2: join group \n 3: leave group \n 4: add new admin to the group"
+              + "\n 5: remove admin from the group \n 6: add post to the group \n 7: remove post from the group \n 8: update group information\n 9: Back")
+        choose = int(input())
+        if choose == 1:
+                print("group name:")
+                name = input()
+                print("group description:")
+                des = input()
+                #admin.add_group(user_num, name, des),
+        elif choose == 2:
+                print("group id:")
+                id = input()
+                #admin.add_member_in_group(id, user_num)
+        elif choose == 3:
+                print("group id:")
+                id = input()
+                #admin.remove_member_from_group(id, user_num)
+        elif choose == 4:
+                print("group id:")
+                id = input()
+                #admin.add_admin_to_group(id, user_num)
+        elif choose == 5:
+                print("group id:")
+                id = input()
+                #admin.remove_admin_from_group(id, user_num)
+        elif choose == 6:
+                print("group id:")
+                id = input()
+                print("post id:")
+                id_post = input()
+                #admin.add_post_in_group(id, id_post)
+        elif choose == 7:
+                print("group id:")
+                id = input()
+                print("post id:")
+                id_post = input()
+                #admin.remove_post_from_group(id, id_post)
+        elif choose == 8:
+                print("group id:")
+                id = input()
+                print("group name:")
+                name = input()
+                print("group description:")
+                des = input()
+                #admin.update_group_info(id, user_num, name, des)
+        #SL.save(admin)
 
 
 def actions(user_num):
