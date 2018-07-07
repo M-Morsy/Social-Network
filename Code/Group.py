@@ -12,12 +12,12 @@ class Group:
     def __init__(self, admin, name, description = None):
         self.admin_id = []
         self.admin_id.append(admin)
-        self.group_id = self.group_count
+        self.group_id = Group.group_count
         self.group_name = name
         self.group_description = description
         self.group_members = []
         self.group_posts = []
-        self.group_count += 1
+        Group.group_count += 1
 
     def __del__(self):
         print("group: ", self.group_name, "with ID: ", self.group_id, "died")
@@ -55,7 +55,7 @@ class Group:
         if admin is None:
             pass
         else:
-            self.admin_id = admin
+            self.admin_id = [admin]
         if name is None:
             pass
         else:

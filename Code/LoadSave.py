@@ -5,9 +5,10 @@ Created on Mon Apr 23 21:40:59 2018
 @author: maged
 """
 import json
-import Code.Users as users
-import Code.Person as person
-import Code.Post as post
+import Users as users
+import Person as person
+import Post as post
+import Group as group
 
                         
     #takes the whole graph represnting the system and save it in a json file
@@ -44,6 +45,13 @@ def save(graph) :
         for comment in post.Comments:
             data["Posts"][-1]["Comments"].append({"text":comment.text, "user_id":comment.user_id,
                 "post_id":comment.post_id, "time":str(comment.time), "comment_id":comment.comment_id})
+    
+    data["Groups"]= []
+    for group in graph.Groups:
+        data["Groups"].append({"admin_id":group.admin_id, "group_id":group.group_id,
+            "group_name":group.group_name, "group_description":group.group_description,
+            "group_members":group.group_members, "group_posts":group.group_posts,
+            "group_count":group.group_count})
     
     with open('users_data.json', 'w') as f:
         json.dump(data, f)
@@ -84,6 +92,14 @@ def load(graph):
             graph.Posts[-1].Comments.append(post.Comment(j["text"], int(j["user_id"]), int(j["post_id"])))
             graph.Posts[-1].Comments[-1].time = j["time"]
             graph.Posts[-1].Comments[-1].comment_id = int(j["comment_id"])
+    
+    for g in data["Groups"]:
+        graph.Groups.append(group.Group(0, g["group_name"], g["group_description"]))
+        graph.Groups[-1].admin_id= [int(i) for i in g["admin_id"]]
+        graph.Groups[-1].group_id= int(g["group_id"])
+        graph.Groups[-1].group_members= [int(i) for i in g["group_members"]]
+        graph.Groups[-1].group_posts= [int(i) for i in g["group_posts"]]
+        graph.Groups[-1].group_count= int(g["group_count"])
 
 
 def getUsersNum():
